@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  EndViewController.h
 //  SudokuApp
 //
 //  Created by Daniel Colligan [el16dc] on 20/11/2017.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface EndViewController : UIViewController
 
 @end
-

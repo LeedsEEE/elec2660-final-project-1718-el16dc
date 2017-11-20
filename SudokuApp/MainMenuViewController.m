@@ -6,16 +6,17 @@
 //  Copyright © 2017 Daniel Colligan [el16dc]. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MainMenuViewController.h"
 
-@interface ViewController ()
+@interface MainMenuViewController ()
 
 @end
 
-@implementation ViewController
+@implementation MainMenuViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"viewDidLoad Menu");
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -26,4 +27,7 @@
 }
 
 
+- (IBAction)Go:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"MenuToGame" sender:self];
+}
 @end
