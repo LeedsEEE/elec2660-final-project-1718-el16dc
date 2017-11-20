@@ -10,7 +10,8 @@
 
 @interface SudokuViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *SudokuGameScreen;
+- (IBAction)Button1:(UIButton *)sender forEvent:(UIEvent *)event;
+
 
 
 @end

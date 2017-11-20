@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainMenuViewController : UIViewController
+@interface MainMenuViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *SudokuApp;
+@property (weak, nonatomic) IBOutlet UIPickerView *GameModePicker;
+
 
 - (IBAction)Go:(UIButton *)sender;
-
-
 
 @end
 

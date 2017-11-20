@@ -16,8 +16,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"viewDidLoad Menu");
     // Do any additional setup after loading the view, typically from a nib.
+    
+    self.GameModePicker.delegate = self;
+    self.GameModePicker.dataSource = self;
 }
 
 
@@ -30,4 +32,30 @@
 - (IBAction)Go:(UIButton *)sender {
     [self performSegueWithIdentifier:@"MenuToGame" sender:self];
 }
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    return 4;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    NSString *name;
+    if (row==0){
+        name = @"Easy";
+    }
+    else if (row==1){
+        name = @"Moderate";
+    }
+    else if (row==2){
+        name = @"Hard";
+    }
+    else if (row==3){
+        name = @"Solver";
+    }
+    return name;
+}
+
 @end

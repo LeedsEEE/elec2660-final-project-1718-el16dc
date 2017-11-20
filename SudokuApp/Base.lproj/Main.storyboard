@@ -42,27 +42,48 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rJV-em-1Rh">
-                                <frame key="frameInset" minX="-73" minY="-82" width="148" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Suduko Game Screen"/>
-                                <connections>
-                                    <action selector="SudokuGameScreen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jMG-uh-hsh"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Heu-JY-r29">
-                                <state key="normal" title="Go"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <state key="normal" title="Go">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="Go:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X0i-PY-xsK"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="utN-eg-6yh">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Challenge">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="24" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QRr-cX-eqc">
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="400" id="voX-tM-3de"/>
+                                </constraints>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="utN-eg-6yh" secondAttribute="trailing" constant="25" id="4Ts-nL-Twp"/>
+                            <constraint firstAttribute="trailing" secondItem="QRr-cX-eqc" secondAttribute="trailing" id="7xk-2X-Al9"/>
+                            <constraint firstItem="QRr-cX-eqc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Bi3-DK-D1m"/>
                             <constraint firstItem="Heu-JY-r29" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="H0c-Px-oKF"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Heu-JY-r29" secondAttribute="bottom" constant="100" id="Ni7-bN-wJF"/>
                             <constraint firstItem="4fc-20-W3t" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="RBC-dv-ZNL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4fc-20-W3t" secondAttribute="trailing" id="Viu-jb-nef"/>
+                            <constraint firstItem="utN-eg-6yh" firstAttribute="top" secondItem="4fc-20-W3t" secondAttribute="bottom" constant="75" id="gox-es-sAQ"/>
+                            <constraint firstItem="utN-eg-6yh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="25" id="ihD-74-sNK"/>
+                            <constraint firstItem="QRr-cX-eqc" firstAttribute="top" secondItem="utN-eg-6yh" secondAttribute="bottom" constant="-75" id="orC-MK-qIB"/>
                             <constraint firstItem="4fc-20-W3t" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="q3f-9w-Urh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Heu-JY-r29" secondAttribute="trailing" id="qkU-z5-YMw"/>
                             <constraint firstItem="4fc-20-W3t" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="5" id="wc4-TX-lSS"/>
@@ -70,17 +91,19 @@
                     </view>
                     <navigationItem key="navigationItem" id="hhL-I7-Zbl"/>
                     <connections>
+                        <outlet property="GameModePicker" destination="QRr-cX-eqc" id="v8X-1b-eVa"/>
                         <outlet property="SudokuApp" destination="4fc-20-W3t" id="Kwf-h3-uAo"/>
                         <segue destination="P5s-hj-4Cf" kind="show" identifier="MenuToGame" id="49m-ip-fLZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="85.599999999999994" y="124.58770614692655"/>
+            <point key="canvasLocation" x="85.5" y="124.5"/>
         </scene>
         <!--Sudoku View Controller-->
         <scene sceneID="maz-9F-9vc">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1cg-ff-wKc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="P5s-hj-4Cf" customClass="SudokuViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xcf-K8-nH9"/>
@@ -90,24 +113,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sudoku Game Screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jv2-DS-CcG">
-                                <frame key="frameInset" minX="104" minY="113" width="166" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sudoku Grid" translatesAutoresizingMaskIntoConstraints="NO" id="RL5-bc-fhI">
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="343" id="QlX-Ig-7av"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G4W-4v-UHq">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38.100000000000001" id="0Cp-ld-umD"/>
+                                    <constraint firstAttribute="width" constant="38.100000000000001" id="lFr-wg-EvV"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="Button11:" destination="P5s-hj-4Cf" eventType="touchUpInside" id="pAR-O7-m5l"/>
+                                    <action selector="Button1:forEvent:" destination="P5s-hj-4Cf" eventType="valueChanged" id="l3J-e0-DSQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QKU-rC-L0L">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="40q-hJ-lCj"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="38" id="Fcj-sB-shq"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="38" id="mrc-b0-UlC"/>
+                                    <constraint firstAttribute="width" constant="38.100000000000001" id="wxm-c2-taS"/>
+                                </constraints>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3a-VT-KqU">
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="38" id="BZt-3J-MYo"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="38" id="IJ1-Lj-Mf1"/>
+                                    <constraint firstAttribute="height" constant="38" id="UL2-ts-RQn"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="38" id="lzC-GQ-ugc"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="38" id="w02-XY-NAZ"/>
+                                    <constraint firstAttribute="width" constant="38.100000000000001" id="xq5-0n-d58"/>
+                                </constraints>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="h3a-VT-KqU" firstAttribute="top" secondItem="xcf-K8-nH9" secondAttribute="bottom" id="1mi-pC-sZO"/>
+                            <constraint firstItem="QKU-rC-L0L" firstAttribute="top" secondItem="kK4-il-OOO" secondAttribute="topMargin" constant="64" id="1sf-ba-pEa"/>
+                            <constraint firstItem="RL5-bc-fhI" firstAttribute="top" secondItem="xcf-K8-nH9" secondAttribute="bottom" id="F39-5A-bdC"/>
+                            <constraint firstItem="h3a-VT-KqU" firstAttribute="leading" secondItem="QKU-rC-L0L" secondAttribute="trailing" id="Lgt-I7-kxN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RL5-bc-fhI" secondAttribute="trailing" id="SWg-o6-eg7"/>
+                            <constraint firstItem="RL5-bc-fhI" firstAttribute="leading" secondItem="kK4-il-OOO" secondAttribute="leadingMargin" id="YGE-Fm-vqy"/>
+                            <constraint firstItem="QKU-rC-L0L" firstAttribute="leading" secondItem="G4W-4v-UHq" secondAttribute="trailing" id="Ys8-gf-y2x"/>
+                            <constraint firstItem="G4W-4v-UHq" firstAttribute="leading" secondItem="kK4-il-OOO" secondAttribute="leadingMargin" id="mZv-EB-bcB"/>
+                            <constraint firstItem="G4W-4v-UHq" firstAttribute="top" secondItem="xcf-K8-nH9" secondAttribute="bottom" id="pss-RS-D1H"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="SudokuGameScreen" destination="jv2-DS-CcG" id="BSf-KI-cbb"/>
-                        <segue destination="9Dz-gL-eNj" kind="show" id="yFQ-TB-bzd"/>
+                        <segue destination="9Dz-gL-eNj" kind="show" identifier="GameToEnd" id="yFQ-TB-bzd"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1cg-ff-wKc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="959" y="125"/>
+            <point key="canvasLocation" x="957.60000000000002" y="124.58770614692655"/>
         </scene>
         <!--End View Controller-->
         <scene sceneID="OFl-84-ydO">
@@ -128,4 +187,7 @@
             <point key="canvasLocation" x="1775" y="125"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Sudoku Grid" width="855" height="852"/>
+    </resources>
 </document>
