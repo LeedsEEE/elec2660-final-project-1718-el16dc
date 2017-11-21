@@ -17,6 +17,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    // create the array of data
+    NSMutableArray* bandArray = [[NSMutableArray alloc] init];
+    
+    // add some sample data
+    [bandArray addObject:@" "];
+    [bandArray addObject:@"1"];
+    [bandArray addObject:@"2"];
+    [bandArray addObject:@"3"];
+    [bandArray addObject:@"4"];
+    [bandArray addObject:@"5"];
+    [bandArray addObject:@"6"];
+    [bandArray addObject:@"7"];
+    [bandArray addObject:@"8"];
+    [bandArray addObject:@"9"];
+    
+    // bind yourTextField to DownPicker
+    
+    self.downPicker1 = [[DownPicker alloc] initWithTextField:self.downPicker1 withData:bandArray];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,7 +52,4 @@
 }
 */
 
-- (IBAction)Button1:(UIButton *)sender forEvent:(UIEvent *)event {
-    
-}
 @end

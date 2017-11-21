@@ -34,15 +34,15 @@
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
-    return 1;
+    return 1; // Sets Single Column
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    return 4;
+    return 4; // Sets It To 4 Rows
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    NSString *name;
+    NSString *name; // Sets Text in Rows
     if (row==0){
         name = @"Easy";
     }
@@ -56,6 +56,10 @@
         name = @"Solver";
     }
     return name;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    
 }
 
 @end

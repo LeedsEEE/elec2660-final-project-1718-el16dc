@@ -7,10 +7,18 @@
 // edit to commit
 
 #import <UIKit/UIKit.h>
+#import "DownPicker.h"//
+// Found from https://cocoapods.org/?q=lang%3Aobjc%20Downpicker
 
 @interface SudokuViewController : UIViewController
 
-- (IBAction)Button1:(UIButton *)sender forEvent:(UIEvent *)event;
+@property (strong, nonatomic) DownPicker *downPicker1;
+@property NSInteger Number1;
+
+
+@property NSInteger Mode;
+
+
 
 
 

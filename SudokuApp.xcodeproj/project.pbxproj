@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E05D4FB3AA911A60BDE6F4A /* Pods_SudokuAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B763AFB4451334738C60F303 /* Pods_SudokuAppUITests.framework */; };
 		B03F1E001FC31EE400F95BBA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B03F1DFF1FC31EE400F95BBA /* main.m */; };
 		B03F1E031FC31EE400F95BBA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B03F1E021FC31EE400F95BBA /* AppDelegate.m */; };
 		B03F1E061FC31EE400F95BBA /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B03F1E051FC31EE400F95BBA /* MainMenuViewController.m */; };
@@ -18,6 +19,8 @@
 		B03F1E331FC31F1900F95BBA /* SudokuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B03F1E321FC31F1900F95BBA /* SudokuViewController.m */; };
 		B03F1E361FC31F4900F95BBA /* EndViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B03F1E351FC31F4900F95BBA /* EndViewController.m */; };
 		B03F1E391FC31F7100F95BBA /* Sudoku.m in Sources */ = {isa = PBXBuildFile; fileRef = B03F1E381FC31F7100F95BBA /* Sudoku.m */; };
+		C00E1F1AEB779C32A08FBE3B /* Pods_SudokuApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD3003F3EAC6782D21BBAC9 /* Pods_SudokuApp.framework */; };
+		F5430B229EE3709520CDBD1D /* Pods_SudokuAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 182BA75ADADD4DD888CD4EB5 /* Pods_SudokuAppTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		021D678BA6AB5A8F3A9F98C7 /* Pods-SudokuApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudokuApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SudokuApp/Pods-SudokuApp.release.xcconfig"; sourceTree = "<group>"; };
+		182BA75ADADD4DD888CD4EB5 /* Pods_SudokuAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudokuAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		32A8C7952F37D87150252474 /* Pods-SudokuApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudokuApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SudokuApp/Pods-SudokuApp.debug.xcconfig"; sourceTree = "<group>"; };
+		34787647DB141B8E09765946 /* Pods-SudokuAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudokuAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SudokuAppUITests/Pods-SudokuAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		4F40C5047659A741F5C4BBF1 /* Pods-SudokuAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudokuAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SudokuAppTests/Pods-SudokuAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		A9ADDBB43A08D5A893C664D6 /* Pods-SudokuAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudokuAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SudokuAppTests/Pods-SudokuAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B03F1DFB1FC31EE400F95BBA /* SudokuApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudokuApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B03F1DFF1FC31EE400F95BBA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B03F1E011FC31EE400F95BBA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -60,6 +69,9 @@
 		B03F1E351FC31F4900F95BBA /* EndViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndViewController.m; sourceTree = "<group>"; };
 		B03F1E371FC31F7100F95BBA /* Sudoku.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sudoku.h; sourceTree = "<group>"; };
 		B03F1E381FC31F7100F95BBA /* Sudoku.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sudoku.m; sourceTree = "<group>"; };
+		B763AFB4451334738C60F303 /* Pods_SudokuAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudokuAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCD3003F3EAC6782D21BBAC9 /* Pods_SudokuApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudokuApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBCC41480BD45FE9401E5238 /* Pods-SudokuAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudokuAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SudokuAppUITests/Pods-SudokuAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C00E1F1AEB779C32A08FBE3B /* Pods_SudokuApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5430B229EE3709520CDBD1D /* Pods_SudokuAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,12 +95,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E05D4FB3AA911A60BDE6F4A /* Pods_SudokuAppUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3AED44A708AE57439D05A236 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BCD3003F3EAC6782D21BBAC9 /* Pods_SudokuApp.framework */,
+				182BA75ADADD4DD888CD4EB5 /* Pods_SudokuAppTests.framework */,
+				B763AFB4451334738C60F303 /* Pods_SudokuAppUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5DDC0FAF812560502282F650 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				32A8C7952F37D87150252474 /* Pods-SudokuApp.debug.xcconfig */,
+				021D678BA6AB5A8F3A9F98C7 /* Pods-SudokuApp.release.xcconfig */,
+				A9ADDBB43A08D5A893C664D6 /* Pods-SudokuAppTests.debug.xcconfig */,
+				4F40C5047659A741F5C4BBF1 /* Pods-SudokuAppTests.release.xcconfig */,
+				CBCC41480BD45FE9401E5238 /* Pods-SudokuAppUITests.debug.xcconfig */,
+				34787647DB141B8E09765946 /* Pods-SudokuAppUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B03F1DF21FC31EE400F95BBA = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +132,8 @@
 				B03F1E171FC31EE400F95BBA /* SudokuAppTests */,
 				B03F1E221FC31EE400F95BBA /* SudokuAppUITests */,
 				B03F1DFC1FC31EE400F95BBA /* Products */,
+				5DDC0FAF812560502282F650 /* Pods */,
+				3AED44A708AE57439D05A236 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -162,9 +202,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B03F1E281FC31EE400F95BBA /* Build configuration list for PBXNativeTarget "SudokuApp" */;
 			buildPhases = (
+				B40DA8789C30AA66C04BE55A /* [CP] Check Pods Manifest.lock */,
 				B03F1DF71FC31EE400F95BBA /* Sources */,
 				B03F1DF81FC31EE400F95BBA /* Frameworks */,
 				B03F1DF91FC31EE400F95BBA /* Resources */,
+				740A059D3AE7E64C5F262187 /* [CP] Embed Pods Frameworks */,
+				724D2A5E72AE6691C995E929 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -179,9 +222,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B03F1E2B1FC31EE400F95BBA /* Build configuration list for PBXNativeTarget "SudokuAppTests" */;
 			buildPhases = (
+				15602735C2CF8F3EB7AAD675 /* [CP] Check Pods Manifest.lock */,
 				B03F1E101FC31EE400F95BBA /* Sources */,
 				B03F1E111FC31EE400F95BBA /* Frameworks */,
 				B03F1E121FC31EE400F95BBA /* Resources */,
+				B340C910562FCA8CC19BFDC1 /* [CP] Embed Pods Frameworks */,
+				05290CEFD6A7076BB5B45DF5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -197,9 +243,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B03F1E2E1FC31EE400F95BBA /* Build configuration list for PBXNativeTarget "SudokuAppUITests" */;
 			buildPhases = (
+				DE702D030EA6288ED031B273 /* [CP] Check Pods Manifest.lock */,
 				B03F1E1B1FC31EE400F95BBA /* Sources */,
 				B03F1E1C1FC31EE400F95BBA /* Frameworks */,
 				B03F1E1D1FC31EE400F95BBA /* Resources */,
+				3B07D0D850C767B92979B29C /* [CP] Embed Pods Frameworks */,
+				03691760CC2AAFEB82B9593B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -282,6 +331,144 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		03691760CC2AAFEB82B9593B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SudokuAppUITests/Pods-SudokuAppUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		05290CEFD6A7076BB5B45DF5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SudokuAppTests/Pods-SudokuAppTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		15602735C2CF8F3EB7AAD675 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3B07D0D850C767B92979B29C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SudokuAppUITests/Pods-SudokuAppUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		724D2A5E72AE6691C995E929 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SudokuApp/Pods-SudokuApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		740A059D3AE7E64C5F262187 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SudokuApp/Pods-SudokuApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B340C910562FCA8CC19BFDC1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SudokuAppTests/Pods-SudokuAppTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B40DA8789C30AA66C04BE55A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DE702D030EA6288ED031B273 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B03F1DF71FC31EE400F95BBA /* Sources */ = {
@@ -440,6 +627,7 @@
 		};
 		B03F1E291FC31EE400F95BBA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 32A8C7952F37D87150252474 /* Pods-SudokuApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SudokuApp/Info.plist;
@@ -451,6 +639,7 @@
 		};
 		B03F1E2A1FC31EE400F95BBA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 021D678BA6AB5A8F3A9F98C7 /* Pods-SudokuApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SudokuApp/Info.plist;
@@ -462,6 +651,7 @@
 		};
 		B03F1E2C1FC31EE400F95BBA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9ADDBB43A08D5A893C664D6 /* Pods-SudokuAppTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = SudokuAppTests/Info.plist;
@@ -474,6 +664,7 @@
 		};
 		B03F1E2D1FC31EE400F95BBA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F40C5047659A741F5C4BBF1 /* Pods-SudokuAppTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = SudokuAppTests/Info.plist;
@@ -486,6 +677,7 @@
 		};
 		B03F1E2F1FC31EE400F95BBA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CBCC41480BD45FE9401E5238 /* Pods-SudokuAppUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = SudokuAppUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -497,6 +689,7 @@
 		};
 		B03F1E301FC31EE400F95BBA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34787647DB141B8E09765946 /* Pods-SudokuAppUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = SudokuAppUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -525,6 +718,7 @@
 				B03F1E2A1FC31EE400F95BBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B03F1E2B1FC31EE400F95BBA /* Build configuration list for PBXNativeTarget "SudokuAppTests" */ = {
 			isa = XCConfigurationList;
@@ -533,6 +727,7 @@
 				B03F1E2D1FC31EE400F95BBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B03F1E2E1FC31EE400F95BBA /* Build configuration list for PBXNativeTarget "SudokuAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -541,6 +736,7 @@
 				B03F1E301FC31EE400F95BBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
