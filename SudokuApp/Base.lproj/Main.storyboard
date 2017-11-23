@@ -145,6 +145,9 @@
                                 <state key="normal" title="Hint" backgroundImage="Grey Square">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="ActionHintButton:" destination="P5s-hj-4Cf" eventType="touchUpInside" id="WEW-IM-3Qe"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJz-3d-FSB">
                                 <constraints>
@@ -154,6 +157,9 @@
                                 <state key="normal" title="Check" backgroundImage="White Square">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="ActionCheckButton:" destination="P5s-hj-4Cf" eventType="touchUpInside" id="Pks-GE-w4m"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YSP-jk-UfO" customClass="UIDownPicker">
                                 <constraints>
@@ -167,6 +173,19 @@
                                     <action selector="downPicker1:" destination="P5s-hj-4Cf" eventType="editingDidEnd" id="aVb-eI-ORT"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUh-yz-zGB">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="fKF-HG-dOv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="55"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Solve" backgroundImage="Grey Square">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="ActionSolveButton:" destination="P5s-hj-4Cf" eventType="touchUpInside" id="Bf2-bk-SoZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -179,18 +198,24 @@
                             <constraint firstItem="YSP-jk-UfO" firstAttribute="leading" secondItem="kK4-il-OOO" secondAttribute="leadingMargin" constant="1" id="ZJB-yj-vgZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yzu-El-X7I" secondAttribute="trailing" constant="16" id="g5p-mL-GCx"/>
                             <constraint firstItem="RL5-bc-fhI" firstAttribute="top" secondItem="xcf-K8-nH9" secondAttribute="bottom" id="o3O-Uy-lfn"/>
+                            <constraint firstItem="OJb-XI-PNd" firstAttribute="top" secondItem="LUh-yz-zGB" secondAttribute="bottom" constant="94" id="qcB-1i-huO"/>
+                            <constraint firstItem="LUh-yz-zGB" firstAttribute="leading" secondItem="kK4-il-OOO" secondAttribute="leadingMargin" constant="16" id="sGm-et-m0n"/>
                             <constraint firstItem="lJz-3d-FSB" firstAttribute="leading" secondItem="kK4-il-OOO" secondAttribute="leadingMargin" constant="16" id="sIR-Dk-UZ0"/>
                             <constraint firstItem="YSP-jk-UfO" firstAttribute="top" secondItem="xcf-K8-nH9" secondAttribute="bottom" id="uDs-O9-MwS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LUh-yz-zGB" secondAttribute="trailing" constant="16" id="uHX-EP-oan"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="downPicker1" destination="YSP-jk-UfO" id="Hs3-Mg-Ps7"/>
+                        <outlet property="OutletCheckButton" destination="lJz-3d-FSB" id="Zkf-o4-6x2"/>
+                        <outlet property="OutletHintButton" destination="yzu-El-X7I" id="fpw-rQ-DcG"/>
+                        <outlet property="OutletSolveButton" destination="LUh-yz-zGB" id="yHC-UC-NSE"/>
+                        <outlet property="downPicker1" destination="YSP-jk-UfO" id="SUB-ta-6UU"/>
                         <segue destination="9Dz-gL-eNj" kind="show" identifier="GameToEnd" id="yFQ-TB-bzd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1cg-ff-wKc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="895" y="124"/>
+            <point key="canvasLocation" x="893.60000000000002" y="123.68815592203899"/>
         </scene>
         <!--End View Controller-->
         <scene sceneID="OFl-84-ydO">

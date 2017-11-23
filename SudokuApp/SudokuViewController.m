@@ -18,23 +18,50 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     // create the array of data
-    NSMutableArray* bandArray = [[NSMutableArray alloc] init];
+    NSMutableArray* number1Array = [[NSMutableArray alloc] init];
     
     // add some sample data
-    [bandArray addObject:@" "];
-    [bandArray addObject:@"1"];
-    [bandArray addObject:@"2"];
-    [bandArray addObject:@"3"];
-    [bandArray addObject:@"4"];
-    [bandArray addObject:@"5"];
-    [bandArray addObject:@"6"];
-    [bandArray addObject:@"7"];
-    [bandArray addObject:@"8"];
-    [bandArray addObject:@"9"];
+    [number1Array addObject:@" "];
+    [number1Array addObject:@"1"];
+    [number1Array addObject:@"2"];
+    [number1Array addObject:@"3"];
+    [number1Array addObject:@"4"];
+    [number1Array addObject:@"5"];
+    [number1Array addObject:@"6"];
+    [number1Array addObject:@"7"];
+    [number1Array addObject:@"8"];
+    [number1Array addObject:@"9"];
     
     // bind yourTextField to DownPicker
     
-    self.downPicker1 = [[DownPicker alloc] initWithTextField:self.downPicker1 withData:bandArray];
+    self.downPicker1 = [[DownPicker alloc] initWithTextField:self.downPicker1 withData:number1Array];
+    
+    if (self.mode==1){
+        NSLog(@"Game Mode = Easy");
+        self.OutletHintButton.hidden = NO;
+        self.OutletCheckButton.hidden = NO;
+        self.OutletSolveButton.hidden = YES;
+    }
+    else if (self.mode==2){
+        NSLog(@"Game Mode = Moderate");
+        self.OutletHintButton.hidden = NO;
+        self.OutletCheckButton.hidden = NO;
+        self.OutletSolveButton.hidden = YES;
+    }
+    if (self.mode==3){
+        NSLog(@"Game Mode = Hard");
+        self.OutletHintButton.hidden = NO;
+        self.OutletCheckButton.hidden = NO;
+        self.OutletSolveButton.hidden = YES;
+    }
+    if (self.mode==4){
+        NSLog(@"Game Mode = Solver");
+        self.OutletHintButton.hidden = YES;
+        self.OutletCheckButton.hidden = YES;
+        self.OutletSolveButton.hidden = NO;
+    }
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,4 +79,20 @@
 }
 */
 
+- (IBAction)Hint:(UIButton *)sender {
+}
+
+- (IBAction)Check:(UIButton *)sender {
+}
+
+- (IBAction)Solve:(UIButton *)sender {
+}
+- (IBAction)ActionHintButton:(UIButton *)sender {
+}
+
+- (IBAction)ActionCheckButton:(UIButton *)sender {
+}
+
+- (IBAction)ActionSolveButton:(UIButton *)sender {
+}
 @end

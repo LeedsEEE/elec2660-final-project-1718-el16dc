@@ -7,6 +7,7 @@
 //
 
 #import "MainMenuViewController.h"
+#import "SudokuViewController.h"
 
 @interface MainMenuViewController ()
 
@@ -20,6 +21,8 @@
     
     self.GameModePicker.delegate = self;
     self.GameModePicker.dataSource = self;
+    self.mode = 1;
+    NSLog(@"Game Mode = %d", self.mode);
 }
 
 
@@ -27,7 +30,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 - (IBAction)Go:(UIButton *)sender {
     [self performSegueWithIdentifier:@"MenuToGame" sender:self];
@@ -59,6 +61,28 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    
+    if (row==0){
+        self.mode = 1;
+    }
+    else if (row==1){
+        self.mode = 2;
+    }
+    else if (row==2){
+        self.mode = 3;
+    }
+    else if (row==3){
+        self.mode=4;
+    }
+    NSLog(@"GameMode Selected = %d", self.mode);
+    
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+        SudokuViewController *destination = [segue destinationViewController];
+        
+        destination.mode = self.mode;
     
 }
 

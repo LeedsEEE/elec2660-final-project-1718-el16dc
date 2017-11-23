@@ -10,4 +10,7 @@
 
 @interface Sudoku : NSObject
 
+@property NSMutableArray* sudoku;
+
+
 @end

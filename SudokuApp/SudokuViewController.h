@@ -13,11 +13,19 @@
 @interface SudokuViewController : UIViewController
 
 @property (strong, nonatomic) DownPicker *downPicker1;
+
 @property NSInteger Number1;
 
 
-@property NSInteger Mode;
+@property int mode;
 
+@property (weak, nonatomic) IBOutlet UIButton *OutletHintButton;
+@property (weak, nonatomic) IBOutlet UIButton *OutletCheckButton;
+@property (weak, nonatomic) IBOutlet UIButton *OutletSolveButton;
+
+- (IBAction)ActionHintButton:(UIButton *)sender;
+- (IBAction)ActionCheckButton:(UIButton *)sender;
+- (IBAction)ActionSolveButton:(UIButton *)sender;
 
 
 
