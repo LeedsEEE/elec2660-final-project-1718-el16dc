@@ -24,17 +24,24 @@
         NSMutableArray *sudoku = [[NSMutableArray alloc] initWithCapacity:sudokuStride*sudokuDepth];
         
         // add some sample data
-        [sudoku addObject: self.Number1];
-        [sudoku addObject:@"1"];
-        [sudoku addObject:@"2"];
-        [sudoku addObject:@"3"];
-        [sudoku addObject:@"4"];
-        [sudoku addObject:@"5"];
-        [sudoku addObject:@"6"];
-        [sudoku addObject:@"7"];
-        [sudoku addObject:@"8"];
-        [sudoku addObject:@"9"];
+        [sudoku addObject:[NSString stringWithFormat:@"%ld",self.Number1]];
+        [sudoku addObject:[NSString stringWithFormat:@"%ld",self.Number2]];
+        [sudoku addObject:[NSString stringWithFormat:@"%ld",self.Number3]];
+        [sudoku addObject:[NSString stringWithFormat:@"%ld",self.Number4]];
+        [sudoku addObject:[NSString stringWithFormat:@"%ld",self.Number5]];
+        [sudoku addObject:[NSString stringWithFormat:@"%ld",self.Number6]];
+        [sudoku addObject:[NSString stringWithFormat:@"%ld",self.Number7]];
+        [sudoku addObject:[NSString stringWithFormat:@"%ld",self.Number8]];
+        [sudoku addObject:[NSString stringWithFormat:@"%ld",self.Number9]];
+        [sudoku addObject:[NSString stringWithFormat:@"%ld",self.Number10]];
+        [sudoku addObject:[NSString stringWithFormat:@"%ld",self.Number11]];
+        [sudoku addObject:[NSString stringWithFormat:@"%ld",self.Number12]];
+        [sudoku addObject:[NSString stringWithFormat:@"%ld",self.Number13]];
+        [sudoku addObject:[NSString stringWithFormat:@"%ld",self.Number14]];
+        [sudoku addObject:[NSString stringWithFormat:@"%ld",self.Number15]];
+        [sudoku addObject:[NSString stringWithFormat:@"%ld",self.Number16]];
         
+        NSLog(@"Sudoku Array = %@", sudoku);
         
     }
     return self;
