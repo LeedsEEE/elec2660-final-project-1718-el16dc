@@ -19,9 +19,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    self.GameModePicker.delegate = self;
-    self.GameModePicker.dataSource = self;
-    self.mode = 1;
+    self.GameModePicker.delegate = self;// sets up picker data
+    self.GameModePicker.dataSource = self; // "    "    "   "
+    self.mode = 1; // initialises gome mode to be one, so if picker is not changed before starting game, it starts easy mode. As before it would start at null
     NSLog(@"Game Mode = %d", self.mode);
 }
 
@@ -32,7 +32,7 @@
 }
 
 - (IBAction)Go:(UIButton *)sender {
-    [self performSegueWithIdentifier:@"MenuToGame" sender:self];
+    [self performSegueWithIdentifier:@"MenuToGame" sender:self]; // completes segue to next screen on press of "GO"
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
@@ -61,7 +61,7 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    
+                    // using the didSelectRow functionsets mode chosen as an integer to call later
     if (row==0){
         self.mode = 1;
     }
@@ -74,7 +74,7 @@
     else if (row==3){
         self.mode=4;
     }
-    NSLog(@"GameMode Selected = %d", self.mode);
+    NSLog(@"GameMode Selected = %d", self.mode); // just to check it works
     
 }
 
@@ -82,7 +82,7 @@
     
         SudokuViewController *destination = [segue destinationViewController];
         
-        destination.mode = self.mode;
+        destination.mode = self.mode; // used to send the integer "mode" to next page to determine buttons shown
     
 }
 

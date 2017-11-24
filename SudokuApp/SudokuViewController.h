@@ -15,20 +15,23 @@
 
 //@property (strong, nonatomic) DownPicker *downPicker1;
 
-@property NSInteger Number1;
+@property int mode; // carried through segu, used when show/hide buttons
 
-
-@property int mode;
-
+// Declare button outlet, so can show/hide when needed
+// Moved down on screen to be fully hidden by keypad when it pops up
 @property (weak, nonatomic) IBOutlet UIButton *OutletHintButton;
 @property (weak, nonatomic) IBOutlet UIButton *OutletCheckButton;
 @property (weak, nonatomic) IBOutlet UIButton *OutletSolveButton;
 
+// Declare Buttons
 - (IBAction)ActionHintButton:(UIButton *)sender;
 - (IBAction)ActionCheckButton:(UIButton *)sender;
 - (IBAction)ActionSolveButton:(UIButton *)sender;
 
+// Setting up all textFields row by row.
+// Named using coordinate system, top left = (1,1) bottom right = (9,9)
 
+// Row 1 buttons (11-19)
 @property (weak, nonatomic) IBOutlet UITextField *textField11;
 @property (weak, nonatomic) IBOutlet UITextField *textField12;
 @property (weak, nonatomic) IBOutlet UITextField *textField13;
@@ -39,6 +42,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textField18;
 @property (weak, nonatomic) IBOutlet UITextField *textField19;
 
+// Row 2 buttons (21-29)
 @property (weak, nonatomic) IBOutlet UITextField *textField21;
 @property (weak, nonatomic) IBOutlet UITextField *textField22;
 @property (weak, nonatomic) IBOutlet UITextField *textField23;
@@ -49,6 +53,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textField28;
 @property (weak, nonatomic) IBOutlet UITextField *textField29;
 
+// Row 3 buttons (31-39)
 @property (weak, nonatomic) IBOutlet UITextField *textField31;
 @property (weak, nonatomic) IBOutlet UITextField *textField32;
 @property (weak, nonatomic) IBOutlet UITextField *textField33;
@@ -59,6 +64,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textField38;
 @property (weak, nonatomic) IBOutlet UITextField *textField39;
 
+// Row 4 buttons (41-49)
 @property (weak, nonatomic) IBOutlet UITextField *textField41;
 @property (weak, nonatomic) IBOutlet UITextField *textField42;
 @property (weak, nonatomic) IBOutlet UITextField *textField43;
@@ -69,6 +75,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textField48;
 @property (weak, nonatomic) IBOutlet UITextField *textField49;
 
+// Row 5 buttons (51-59)
 @property (weak, nonatomic) IBOutlet UITextField *textField51;
 @property (weak, nonatomic) IBOutlet UITextField *textField52;
 @property (weak, nonatomic) IBOutlet UITextField *textField53;
@@ -79,6 +86,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textField58;
 @property (weak, nonatomic) IBOutlet UITextField *textField59;
 
+// Row 6 buttons (61-69)
 @property (weak, nonatomic) IBOutlet UITextField *textField61;
 @property (weak, nonatomic) IBOutlet UITextField *textField62;
 @property (weak, nonatomic) IBOutlet UITextField *textField63;
@@ -89,6 +97,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textField68;
 @property (weak, nonatomic) IBOutlet UITextField *textField69;
 
+// Row 7 buttons (71-79)
 @property (weak, nonatomic) IBOutlet UITextField *textField71;
 @property (weak, nonatomic) IBOutlet UITextField *textField72;
 @property (weak, nonatomic) IBOutlet UITextField *textField73;
@@ -99,6 +108,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textField78;
 @property (weak, nonatomic) IBOutlet UITextField *textField79;
 
+// Row 8 buttons (81-89)
 @property (weak, nonatomic) IBOutlet UITextField *textField81;
 @property (weak, nonatomic) IBOutlet UITextField *textField82;
 @property (weak, nonatomic) IBOutlet UITextField *textField83;
@@ -109,6 +119,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textField88;
 @property (weak, nonatomic) IBOutlet UITextField *textField89;
 
+// Row 9 buttons (91-99)
 @property (weak, nonatomic) IBOutlet UITextField *textField91;
 @property (weak, nonatomic) IBOutlet UITextField *textField92;
 @property (weak, nonatomic) IBOutlet UITextField *textField93;
@@ -124,10 +135,10 @@
 //@property (strong, nonatomic) DownPicker *downPicker;
 
 
-- (IBAction)touchOutside:(UIControl *)sender;
+- (IBAction)touchOutside:(UIControl *)sender; // used when initialising the text fields
 
-- (IBAction)numberEntered:(UITextField *)sender;
+- (IBAction)numberEntered:(UITextField *)sender; // used when storing numbers in textField
 
-@property (strong, nonatomic) NSMutableArray* textFields;
+@property (strong, nonatomic) NSMutableArray* textFields; // Array of all text fields
 
 @end

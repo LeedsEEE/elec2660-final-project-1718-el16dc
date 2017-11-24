@@ -195,7 +195,7 @@
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
-    return YES;
+    return YES; // forces text field to act/become first responder and then give it up for the next one, whilst the keypad is active (and therefore the text field is selected
 }
 
 - (IBAction)ActionHintButton:(UIButton *)sender {
@@ -208,27 +208,20 @@
 }
 - (IBAction)touchOutside:(UIControl *)sender {
     
-    for(int i = 0; i < [_textFields count]; i++){
-        for(int j = 0; j < [[_textFields objectAtIndex:i] count]; j++){
-            UITextField *tempTextField = [[_textFields objectAtIndex:i] objectAtIndex:j];
-            if([tempTextField isFirstResponder]){
-                [tempTextField resignFirstResponder];
+    for(int i = 0; i < [_textFields count]; i++){ // i = row, j = column. This goes through all i's
+        for(int j = 0; j < [[_textFields objectAtIndex:i] count]; j++){ // this goes through all j's
+            UITextField *tempTextField = [[_textFields objectAtIndex:i] objectAtIndex:j]; // sets up temporary save for textField
+            if([tempTextField isFirstResponder]){ // checks if first responder, which it always is
+                [tempTextField resignFirstResponder];// forces it again to be first responder in order to input the number into the text field once the kepad is dismissed
             }
         }
     }
-    
-//    if([self.textField isFirstResponder]){
-//        [_textField resignFirstResponder];
-//    }
-//    if([_textField2 isFirstResponder]){
-//        [_textField2 resignFirstResponder];
-//    }
 }
 
-- (IBAction)numberEntered:(UITextField *)sender {
-    NSLog(@">>>Text entered: %@", sender.text);
-    if([sender.text length] > 1){
-        sender.text = [sender.text substringWithRange:NSMakeRange(0, 1)];
+- (IBAction)numberEntered:(UITextField *)sender { // checks length of inputted string
+    NSLog(@">>>Text entered: %@", sender.text); // NSLog to see what is entered
+    if([sender.text length] > 1){ // as long as longer than one...
+        sender.text = [sender.text substringWithRange:NSMakeRange(0, 1)]; // trim streing to only first entered character
     }
     
 }
