@@ -31,7 +31,7 @@
 // Setting up all textFields row by row.
 // Named using coordinate system, top left = (1,1) bottom right = (9,9)
 
-// Row 1 buttons (11-19)
+/*// Row 1 buttons (11-19)
 @property (weak, nonatomic) IBOutlet UITextField *textField11;
 @property (weak, nonatomic) IBOutlet UITextField *textField12;
 @property (weak, nonatomic) IBOutlet UITextField *textField13;
@@ -128,7 +128,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textField96;
 @property (weak, nonatomic) IBOutlet UITextField *textField97;
 @property (weak, nonatomic) IBOutlet UITextField *textField98;
-@property (weak, nonatomic) IBOutlet UITextField *textField99;
+@property (weak, nonatomic) IBOutlet UITextField *textField99;*/
 
 
 

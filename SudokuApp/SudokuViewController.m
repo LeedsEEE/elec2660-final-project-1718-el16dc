@@ -40,7 +40,7 @@
     */
     
     
-    NSMutableArray* firstRow = [[NSMutableArray alloc] init];
+    /*NSMutableArray* firstRow = [[NSMutableArray alloc] init];
     [firstRow addObject:_textField11];
     [firstRow addObject:_textField12];
     [firstRow addObject:_textField13];
@@ -148,8 +148,64 @@
     [_textFields addObject:sixthRow];
     [_textFields addObject:seventhRow];
     [_textFields addObject:eighthRow];
-    [_textFields addObject:ninthRow];
-        
+    [_textFields addObject:ninthRow];*/
+    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    CGFloat screenHeight = screenRect.size.height;
+    NSLog(@"screenWidth = %f", screenWidth);
+    NSLog(@"screenHeight = %f", screenHeight);
+    
+    float borderWidth = ((screenWidth*343)/375);
+    float borderHeight = ((screenHeight*603)/667);
+    float sudokuHeight = borderWidth;
+    float sudokuWidth = borderWidth;
+    NSLog(@"borderWidth = %f", borderWidth);
+    NSLog(@"SudokuHeight = %f", sudokuHeight);
+    NSLog(@"SudokuWidth = %f", sudokuWidth);
+    NSLog(@"borderHeight = %f", borderHeight);
+    
+    float squareHeight = (sudokuHeight/9);
+    float squareWidth = (sudokuWidth/9);
+    NSLog(@"squareHeight = %f", squareHeight);
+    NSLog(@"squareWidth = %f", squareWidth);
+    
+    float startx = ((screenWidth-sudokuWidth)/2)+1;
+    float starty = 64.0;//(screenHeight-borderHeight);
+    
+    NSLog(@"startx = %f", startx);
+    NSLog(@"starty = %f", starty);
+    
+    
+    
+    
+ for (int y = 0; y <= 8; y++) {
+        for (int x = 0; x <= 8; x++) {
+            // = [[UITextField alloc] initWithFrame:CGRectMake(x, y, width, height)] found on https://gist.github.com/bsodmike/988751
+            UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(startx + x*squareWidth, starty + y*squareHeight, squareWidth, squareHeight)];
+            textField.text=@"X";
+            //textField.center = textField.center;
+            //textField.borderStyle = UITextBorderStyleRoundedRect; just to check
+            textField.textAlignment = NSTextAlignmentCenter;
+            textField.keyboardType = UIKeyboardTypeNumberPad;
+            [self.view addSubview:textField];
+            
+        }
+    }
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     if (self.mode==1){
         NSLog(@"Game Mode = Easy");
         self.OutletHintButton.hidden = NO;

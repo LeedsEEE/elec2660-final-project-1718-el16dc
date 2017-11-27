@@ -1,18 +1,18 @@
 //
-//  EndViewController.m
-//  SudokuApp
+//  EndGameViewController.m
+//  
 //
-//  Created by Daniel Colligan [el16dc] on 20/11/2017.
-//  Copyright © 2017 Daniel Colligan [el16dc]. All rights reserved.
+//  Created by Daniel Colligan [el16dc] on 27/11/2017.
+//
 //
 
-#import "EndViewController.h"
+#import "EndGameViewController.h"
 
-@interface EndViewController ()
+@interface EndGameViewController ()
 
 @end
 
-@implementation EndViewController
+@implementation EndGameViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

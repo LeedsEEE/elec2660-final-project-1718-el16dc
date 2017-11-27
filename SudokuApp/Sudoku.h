@@ -6,6 +6,7 @@
 //  Copyright © 2017 Daniel Colligan [el16dc]. All rights reserved.
 //
 
+
 #import <Foundation/Foundation.h>
 
 @interface Sudoku : NSObject

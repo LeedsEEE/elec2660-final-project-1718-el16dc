@@ -17,8 +17,9 @@
 		B03F1E191FC31EE400F95BBA /* SudokuAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B03F1E181FC31EE400F95BBA /* SudokuAppTests.m */; };
 		B03F1E241FC31EE400F95BBA /* SudokuAppUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B03F1E231FC31EE400F95BBA /* SudokuAppUITests.m */; };
 		B03F1E331FC31F1900F95BBA /* SudokuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B03F1E321FC31F1900F95BBA /* SudokuViewController.m */; };
-		B03F1E361FC31F4900F95BBA /* EndViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B03F1E351FC31F4900F95BBA /* EndViewController.m */; };
 		B03F1E391FC31F7100F95BBA /* Sudoku.m in Sources */ = {isa = PBXBuildFile; fileRef = B03F1E381FC31F7100F95BBA /* Sudoku.m */; };
+		B0D909371FCC3A13000E5C64 /* SolverEndViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D909361FCC3A13000E5C64 /* SolverEndViewController.m */; };
+		B0D9093A1FCC40D0000E5C64 /* EndGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D909391FCC40D0000E5C64 /* EndGameViewController.m */; };
 		C00E1F1AEB779C32A08FBE3B /* Pods_SudokuApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD3003F3EAC6782D21BBAC9 /* Pods_SudokuApp.framework */; };
 		F5430B229EE3709520CDBD1D /* Pods_SudokuAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 182BA75ADADD4DD888CD4EB5 /* Pods_SudokuAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -65,10 +66,12 @@
 		B03F1E251FC31EE400F95BBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B03F1E311FC31F1900F95BBA /* SudokuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SudokuViewController.h; sourceTree = "<group>"; };
 		B03F1E321FC31F1900F95BBA /* SudokuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SudokuViewController.m; sourceTree = "<group>"; };
-		B03F1E341FC31F4900F95BBA /* EndViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndViewController.h; sourceTree = "<group>"; };
-		B03F1E351FC31F4900F95BBA /* EndViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndViewController.m; sourceTree = "<group>"; };
 		B03F1E371FC31F7100F95BBA /* Sudoku.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sudoku.h; sourceTree = "<group>"; };
 		B03F1E381FC31F7100F95BBA /* Sudoku.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sudoku.m; sourceTree = "<group>"; };
+		B0D909351FCC3A13000E5C64 /* SolverEndViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolverEndViewController.h; sourceTree = "<group>"; };
+		B0D909361FCC3A13000E5C64 /* SolverEndViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolverEndViewController.m; sourceTree = "<group>"; };
+		B0D909381FCC40D0000E5C64 /* EndGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndGameViewController.h; sourceTree = "<group>"; };
+		B0D909391FCC40D0000E5C64 /* EndGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndGameViewController.m; sourceTree = "<group>"; };
 		B763AFB4451334738C60F303 /* Pods_SudokuAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudokuAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD3003F3EAC6782D21BBAC9 /* Pods_SudokuApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SudokuApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBCC41480BD45FE9401E5238 /* Pods-SudokuAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SudokuAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SudokuAppUITests/Pods-SudokuAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -156,11 +159,13 @@
 				B03F1E051FC31EE400F95BBA /* MainMenuViewController.m */,
 				B03F1E311FC31F1900F95BBA /* SudokuViewController.h */,
 				B03F1E321FC31F1900F95BBA /* SudokuViewController.m */,
-				B03F1E341FC31F4900F95BBA /* EndViewController.h */,
-				B03F1E351FC31F4900F95BBA /* EndViewController.m */,
 				B03F1E371FC31F7100F95BBA /* Sudoku.h */,
 				B03F1E381FC31F7100F95BBA /* Sudoku.m */,
+				B0D909381FCC40D0000E5C64 /* EndGameViewController.h */,
+				B0D909391FCC40D0000E5C64 /* EndGameViewController.m */,
 				B03F1E071FC31EE400F95BBA /* Main.storyboard */,
+				B0D909351FCC3A13000E5C64 /* SolverEndViewController.h */,
+				B0D909361FCC3A13000E5C64 /* SolverEndViewController.m */,
 				B03F1E0A1FC31EE400F95BBA /* Assets.xcassets */,
 				B03F1E0C1FC31EE400F95BBA /* LaunchScreen.storyboard */,
 				B03F1E0F1FC31EE400F95BBA /* Info.plist */,
@@ -477,10 +482,11 @@
 			files = (
 				B03F1E061FC31EE400F95BBA /* MainMenuViewController.m in Sources */,
 				B03F1E031FC31EE400F95BBA /* AppDelegate.m in Sources */,
-				B03F1E361FC31F4900F95BBA /* EndViewController.m in Sources */,
+				B0D909371FCC3A13000E5C64 /* SolverEndViewController.m in Sources */,
 				B03F1E001FC31EE400F95BBA /* main.m in Sources */,
 				B03F1E391FC31F7100F95BBA /* Sudoku.m in Sources */,
 				B03F1E331FC31F1900F95BBA /* SudokuViewController.m in Sources */,
+				B0D9093A1FCC40D0000E5C64 /* EndGameViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
