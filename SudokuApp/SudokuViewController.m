@@ -139,8 +139,7 @@
     [firstRow addObject:_textField98];
     [firstRow addObject:_textField99];
     
-    _textFields = [[NSMutableArray alloc]init];
-    [_textFields addObject:firstRow];
+        [_textFields addObject:firstRow];
     [_textFields addObject:secondRow];
     [_textFields addObject:thirdRow];
     [_textFields addObject:fourthRow];
@@ -149,6 +148,8 @@
     [_textFields addObject:seventhRow];
     [_textFields addObject:eighthRow];
     [_textFields addObject:ninthRow];*/
+    _textFields = [[NSMutableArray alloc]init];
+
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
@@ -180,32 +181,33 @@
     
     
  for (int y = 0; y <= 8; y++) {
+     NSMutableArray *row = [NSMutableArray array];
         for (int x = 0; x <= 8; x++) {
             // = [[UITextField alloc] initWithFrame:CGRectMake(x, y, width, height)] found on https://gist.github.com/bsodmike/988751
             UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(startx + x*squareWidth, starty + y*squareHeight, squareWidth, squareHeight)];
-            textField.text=@"X";
-            //textField.center = textField.center;
+            //textField.text=@"X";
             //textField.borderStyle = UITextBorderStyleRoundedRect; just to check
+
             textField.textAlignment = NSTextAlignmentCenter;
             textField.keyboardType = UIKeyboardTypeNumberPad;
+            //textField.returnKeyType = UIReturnKeyDone;
+            textField.delegate = self;
+            [row addObject:textField];
             [self.view addSubview:textField];
             
         }
+     [_textFields addObject:row];
     }
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+/*
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShow:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidHide:)
+                                                 name:UIKeyboardDidHideNotification
+                                               object:nil];
+    */
     if (self.mode==1){
         NSLog(@"Game Mode = Easy");
         self.OutletHintButton.hidden = NO;
@@ -249,7 +251,15 @@
 }
 */
 
--(BOOL) textFieldShouldReturn:(UITextField *)textField{
+- (BOOL)textField:(UITextField *)textField
+shouldChangeCharactersInRange:(NSRange)range
+replacementString:(NSString *)string{
+    //NSLog(@"%@, %@, %ld", textField.text, string, string.length);
+    return !(textField.text.length > 0 && string.length != 0);
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    NSLog(@"Delegate called tFSR");
     [textField resignFirstResponder];
     return YES; // forces text field to act/become first responder and then give it up for the next one, whilst the keypad is active (and therefore the text field is selected
 }
@@ -264,6 +274,7 @@
 }
 - (IBAction)touchOutside:(UIControl *)sender {
     
+    NSLog(@"Touch outside");
     for(int i = 0; i < [_textFields count]; i++){ // i = row, j = column. This goes through all i's
         for(int j = 0; j < [[_textFields objectAtIndex:i] count]; j++){ // this goes through all j's
             UITextField *tempTextField = [[_textFields objectAtIndex:i] objectAtIndex:j]; // sets up temporary save for textField
@@ -273,12 +284,13 @@
         }
     }
 }
-
-- (IBAction)numberEntered:(UITextField *)sender { // checks length of inputted string
-    NSLog(@">>>Text entered: %@", sender.text); // NSLog to see what is entered
-    if([sender.text length] > 1){ // as long as longer than one...
-        sender.text = [sender.text substringWithRange:NSMakeRange(0, 1)]; // trim streing to only first entered character
-    }
-    
+/*
+- (void)keyboardDidShow: (NSNotification *) notif{
+    // Do something here
 }
+
+- (void)keyboardDidHide: (NSNotification *) notif{
+    // Do something here
+}*/
+
 @end

@@ -23,10 +23,17 @@
 @property (weak, nonatomic) IBOutlet UIButton *OutletCheckButton;
 @property (weak, nonatomic) IBOutlet UIButton *OutletSolveButton;
 
+@property(nonatomic) UIReturnKeyType returnKeyType;
+
 // Declare Buttons
 - (IBAction)ActionHintButton:(UIButton *)sender;
 - (IBAction)ActionCheckButton:(UIButton *)sender;
 - (IBAction)ActionSolveButton:(UIButton *)sender;
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField;
+- (BOOL)textField:(UITextField *)textField
+shouldChangeCharactersInRange:(NSRange)range
+replacementString:(NSString *)string;
 
 // Setting up all textFields row by row.
 // Named using coordinate system, top left = (1,1) bottom right = (9,9)
@@ -137,7 +144,7 @@
 
 - (IBAction)touchOutside:(UIControl *)sender; // used when initialising the text fields
 
-- (IBAction)numberEntered:(UITextField *)sender; // used when storing numbers in textField
+//- (IBAction)numberEntered:(UITextField *)sender; // used when storing numbers in textField
 
 @property (strong, nonatomic) NSMutableArray* textFields; // Array of all text fields
 
