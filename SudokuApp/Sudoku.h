@@ -30,4 +30,6 @@
 @property NSInteger Number26;
 @property NSInteger Number27;
 
+- (void) generateSudoku;
+
 @end

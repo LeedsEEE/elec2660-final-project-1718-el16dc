@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>DownPicker-DownPicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>DownPicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-SudokuApp.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-SudokuAppTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-SudokuAppUITests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>808C99B70FE41FB56B15FB934EBADB2F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>82DD1B035F5CBBBD0AB09B7E8E7BAED6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9CB043A3E29DEEB9D6FE81B6406FA7CD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C7A939060109305910E0967FCD5612FC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FEFA6975895DC21CA7CF091806E3CC27</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
