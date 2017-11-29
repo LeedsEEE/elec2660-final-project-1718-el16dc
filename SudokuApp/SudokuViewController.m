@@ -7,6 +7,7 @@
 //
 
 #import "SudokuViewController.h"
+#import "Sudoku.h"
 
 @interface SudokuViewController ()
 

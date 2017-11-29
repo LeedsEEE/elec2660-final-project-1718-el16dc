@@ -10,9 +10,9 @@
 #import "Sudoku.h"
 #import "SudokuViewController.h"
 
-@implementation Sudoku
-
-//got help with generation from: https://stackoverflow.com/questions/8595370/sudoku-generation-in-objective-c
+@implementation Sudoku{
+   // NSMutableArray *field;
+}
 
 - (instancetype)init
 {
@@ -48,10 +48,13 @@
         
     }
     return self;*/
-
+/*
+        // found from: https://stackoverflow.com/questions/8595370/sudoku-generation-in-objective-c
         [self generateSudoku];
     }
-    
+    return self;
+}
+
     -(void) generateSudoku{
         [self fillEmptyGrid];
         @autoreleasepool {
@@ -143,5 +146,22 @@
             return nil;
         }
     }
- 
+ */
+        
+        int row1[9] = {0};
+        NSLog(@"Row1 = %i, %i, %i, %i, %i, %i, %i, %i, %i", row1[0], row1[1],  row1[2], row1[3], row1[4], row1[5], row1[6], row1[7], row1[8]);
+        
+        int i = rand()%9+1; //http://pinkstone.co.uk/how-to-generate-a-random-number-in-ios/
+        NSLog(@"Random Number: %i", i);
+              for (x=0; x<=8; x++){
+            if (row1[x] == i){
+                return false
+            }
+            else return true;
+            }
+        if (true){
+            
+        }
+        }
+        
 @end
