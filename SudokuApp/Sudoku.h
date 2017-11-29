@@ -10,9 +10,9 @@
 #import <Foundation/Foundation.h>
 
 @interface Sudoku : NSObject
-
-@property NSMutableArray* sudoku;
 /*
+@property NSMutableArray* sudoku;
+
 @property NSInteger Number11;
 @property NSInteger Number12;
 @property NSInteger Number13;
@@ -29,9 +29,10 @@
 @property NSInteger Number25;
 @property NSInteger Number26;
 @property NSInteger Number27;
-*/
+
 //- (void) generateSudoku;
 
+-(NSMutableArray *) generateSudoku;
 
-
+*/
 @end

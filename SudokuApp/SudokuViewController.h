@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Sudoku.h"
 #import "DownPicker.h"//
+#import "Sudoku.h"
 // Found from https://cocoapods.org/?q=lang%3Aobjc%20Downpicker
 
 @interface SudokuViewController : UIViewController <UITextFieldDelegate>
@@ -147,5 +148,6 @@ replacementString:(NSString *)string;
 //- (IBAction)numberEntered:(UITextField *)sender; // used when storing numbers in textField
 
 @property (strong, nonatomic) NSMutableArray* textFields; // Array of all text fields
+@property NSMutableArray *field;
 
 @end

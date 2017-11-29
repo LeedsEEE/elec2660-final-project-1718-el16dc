@@ -11,14 +11,16 @@
 #import "SudokuViewController.h"
 
 @implementation Sudoku{
-   // NSMutableArray *field;
+  /* NSMutableArray *field;
 }
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        
+        [self generateSudoku];
+    
+
        /* // initialise into 9x9 2d array
         int sudokuStride=9;
         int sudokuDepth=9;
@@ -47,13 +49,14 @@
         NSLog(@"Sudoku Array = %@", sudoku);
         
     }
-    return self;*/
-/*
+    return self;
+
         // found from: https://stackoverflow.com/questions/8595370/sudoku-generation-in-objective-c
         [self generateSudoku];
     }
     return self;
 }
+
 
     -(void) generateSudoku{
         [self fillEmptyGrid];
@@ -146,22 +149,29 @@
             return nil;
         }
     }
- */
+ /*
+-(NSMutableArray *)generateSudoku{
+    NSMutableArray *temp = [[NSMutableArray alloc] init];
+    int row1[9] = {0};
+    BOOL insert;
+    NSLog(@"Row1 = %i, %i, %i, %i, %i, %i, %i, %i, %i", row1[0], row1[1],  row1[2], row1[3], row1[4], row1[5], row1[6], row1[7], row1[8]);
         
-        int row1[9] = {0};
-        NSLog(@"Row1 = %i, %i, %i, %i, %i, %i, %i, %i, %i", row1[0], row1[1],  row1[2], row1[3], row1[4], row1[5], row1[6], row1[7], row1[8]);
-        
-        int i = rand()%9+1; //http://pinkstone.co.uk/how-to-generate-a-random-number-in-ios/
-        NSLog(@"Random Number: %i", i);
-              for (x=0; x<=8; x++){
-            if (row1[x] == i){
-                return false
-            }
-            else return true;
-            }
-        if (true){
-            
+    int i = rand()%9+1; //http://pinkstone.co.uk/how-to-generate-a-random-number-in-ios/
+    NSLog(@"Random Number: %i", i);
+    for (int x = 0; x<=8; x++){
+        if (row1[x] == i){ // IF element is equal to the random number...
+            // Random number has already been used so don't bother continuing
+            insert = false;
         }
+        else{
+            insert = true;
         }
-        
+        if (insert == true){
+                        
+        }
+    }
+    return temp;
+}*/
+}
+
 @end
