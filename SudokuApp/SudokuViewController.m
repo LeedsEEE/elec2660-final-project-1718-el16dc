@@ -195,10 +195,12 @@
             textField.textAlignment = NSTextAlignmentCenter;
             textField.keyboardType = UIKeyboardTypeNumberPad;
             [textField setFont:[UIFont systemFontOfSize:25]];
+            textField.restorationIdentifier = textField i j;
             //textField.returnKeyType = UIReturnKeyDone;
             textField.delegate = self;
             [row addObject:textField];
             [self.view addSubview:textField];
+            NSLog(@"textField name = %@", textField.restorationIdentifier);
             
         }
      [_textFields addObject:row];
@@ -253,20 +255,20 @@
     
     [self generateSudoku];
     [self fillEmptyGrid];
-    
+    /*
     for (int i = 0; i <= 8; i++) {
-        NSLog(@"%d, %d, %d, %d, %d, %d, %d, %d, %d",
-              [(NSNumber *)[self.field objectAtIndex:(0 + 9*i)] intValue],
-              [(NSNumber *)[self.field objectAtIndex:(1 + 9*i)] intValue],
-              [(NSNumber *)[self.field objectAtIndex:(2 + 9*i)] intValue],
-              [(NSNumber *)[self.field objectAtIndex:(3 + 9*i)] intValue],
-              [(NSNumber *)[self.field objectAtIndex:(4 + 9*i)] intValue],
-              [(NSNumber *)[self.field objectAtIndex:(5 + 9*i)] intValue],
-              [(NSNumber *)[self.field objectAtIndex:(6 + 9*i)] intValue],
-              [(NSNumber *)[self.field objectAtIndex:(7 + 9*i)] intValue],
-              [(NSNumber *)[self.field objectAtIndex:(8 + 9*i)] intValue]);
-    }
-    
+        NSInteger a = [(NSNumber *)[self.field objectAtIndex:(0 + 9*i)] intValue];
+        NSInteger b = [(NSNumber *)[self.field objectAtIndex:(1 + 9*i)] intValue];
+        NSInteger c = [(NSNumber *)[self.field objectAtIndex:(2 + 9*i)] intValue];
+        NSInteger d = [(NSNumber *)[self.field objectAtIndex:(3 + 9*i)] intValue];
+        NSInteger e = [(NSNumber *)[self.field objectAtIndex:(4 + 9*i)] intValue];
+        NSInteger f = [(NSNumber *)[self.field objectAtIndex:(5 + 9*i)] intValue];
+        NSInteger g = [(NSNumber *)[self.field objectAtIndex:(6 + 9*i)] intValue];
+        NSInteger h = [(NSNumber *)[self.field objectAtIndex:(7 + 9*i)] intValue];
+        NSInteger k = [(NSNumber *)[self.field objectAtIndex:(8 + 9*i)] intValue];
+        NSLog(@"%d, %d, %d, %d, %d, %d, %d, %d, %ld", a, b, c, d, e, f, g, h, k);
+                  }
+    */
 }
 
 
@@ -308,7 +310,7 @@ replacementString:(NSString *)string{
 }
 - (IBAction)touchOutside:(UIControl *)sender {
     
-    NSLog(@"Touch outside");
+    NSLog(@"Touch outside"); // IN HERE DO CHECK ROW,COLUMN & BOX RULE CHECK
     for(int i = 0; i < [_textFields count]; i++){ // i = row, j = column. This goes through all i's
         for(int j = 0; j < [[_textFields objectAtIndex:i] count]; j++){ // this goes through all j's
             UITextField *tempTextField = [[_textFields objectAtIndex:i] objectAtIndex:j]; // sets up temporary save for textField
