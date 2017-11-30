@@ -184,10 +184,12 @@
     
     
     
+    
  for (int y = 0; y <= 8; y++) {
      NSMutableArray *row = [NSMutableArray array];
         for (int x = 0; x <= 8; x++) {
             // = [[UITextField alloc] initWithFrame:CGRectMake(x, y, width, height)] found on https://gist.github.com/bsodmike/988751
+            
             UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(startx + x*squareWidth, starty + y*squareHeight, squareWidth, squareHeight)];
             //textField.text=@"X";
             //textField.borderStyle = UITextBorderStyleRoundedRect; just to check
@@ -195,7 +197,7 @@
             textField.textAlignment = NSTextAlignmentCenter;
             textField.keyboardType = UIKeyboardTypeNumberPad;
             [textField setFont:[UIFont systemFontOfSize:25]];
-            textField.restorationIdentifier = textField i j;
+            //textField.restorationIdentifier = textField i j;
             //textField.returnKeyType = UIReturnKeyDone;
             textField.delegate = self;
             [row addObject:textField];
@@ -359,6 +361,9 @@ replacementString:(NSString *)string{
         }
         else{
             NSLog(@"field fill =%@",_field);
+            NSLog(@"tiger%@",_textFields);
+            
+           
             /*
             for (int i = 0; i <= 8; i++) {
             NSLog(@"%d, %d, %d, %d, %d, %d, %d, %d, %d",
