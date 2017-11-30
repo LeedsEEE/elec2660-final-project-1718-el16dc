@@ -250,7 +250,25 @@
         self.OutletCheckButton.hidden = YES;
         self.OutletSolveButton.hidden = NO;
     }
+    
+    [self generateSudoku];
+    [self fillEmptyGrid];
+    
+    for (int i = 0; i <= 8; i++) {
+        NSLog(@"%d, %d, %d, %d, %d, %d, %d, %d, %d",
+              [(NSNumber *)[self.field objectAtIndex:(0 + 9*i)] intValue],
+              [(NSNumber *)[self.field objectAtIndex:(1 + 9*i)] intValue],
+              [(NSNumber *)[self.field objectAtIndex:(2 + 9*i)] intValue],
+              [(NSNumber *)[self.field objectAtIndex:(3 + 9*i)] intValue],
+              [(NSNumber *)[self.field objectAtIndex:(4 + 9*i)] intValue],
+              [(NSNumber *)[self.field objectAtIndex:(5 + 9*i)] intValue],
+              [(NSNumber *)[self.field objectAtIndex:(6 + 9*i)] intValue],
+              [(NSNumber *)[self.field objectAtIndex:(7 + 9*i)] intValue],
+              [(NSNumber *)[self.field objectAtIndex:(8 + 9*i)] intValue]);
+    }
+    
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -339,6 +357,20 @@ replacementString:(NSString *)string{
         }
         else{
             NSLog(@"field fill =%@",_field);
+            /*
+            for (int i = 0; i <= 8; i++) {
+            NSLog(@"%d, %d, %d, %d, %d, %d, %d, %d, %d",
+                      [(NSNumber *)[self.field objectAtIndex:(0 + 9*i)] intValue],
+                      [(NSNumber *)[self.field objectAtIndex:(1 + 9*i)] intValue],
+                      [(NSNumber *)[self.field objectAtIndex:(2 + 9*i)] intValue],
+                      [(NSNumber *)[self.field objectAtIndex:(3 + 9*i)] intValue],
+                      [(NSNumber *)[self.field objectAtIndex:(4 + 9*i)] intValue],
+                      [(NSNumber *)[self.field objectAtIndex:(5 + 9*i)] intValue],
+                      [(NSNumber *)[self.field objectAtIndex:(6 + 9*i)] intValue],
+                      [(NSNumber *)[self.field objectAtIndex:(7 + 9*i)] intValue],
+                      [(NSNumber *)[self.field objectAtIndex:(8 + 9*i)] intValue]);
+            }
+             */
         }
     }
 }
