@@ -54,6 +54,8 @@
     
  for (int y = 0; y <= 8; y++) {
      NSMutableArray *row = [NSMutableArray array];
+     
+     
         for (int x = 0; x <= 8; x++) {
             // = [[UITextField alloc] initWithFrame:CGRectMake(x, y, width, height)] found on https://gist.github.com/bsodmike/988751
             
@@ -68,6 +70,7 @@
             //textField.returnKeyType = UIReturnKeyDone;
             textField.delegate = self;
             [row addObject:textField];
+            [column addObject:textField]
             [self.view addSubview:textField];
             
         }
@@ -163,6 +166,7 @@ replacementString:(NSString *)string{
 - (IBAction)ActionHintButton:(UIButton *)sender {
 
     NSMutableArray *numberReveal = [self GenerateNRandomNumbers:1];
+   
     for(int i = 0; i < _field.count; i++){
         for(int j = 0; j < [[_field objectAtIndex:i] count]; j++){
             for(int n = 0; n < [numberReveal count]; n++){
@@ -171,9 +175,6 @@ replacementString:(NSString *)string{
                     currentTextField.text = [NSString stringWithFormat:@"%@", [[_field objectAtIndex:i] objectAtIndex:j]];
                     currentTextField.userInteractionEnabled = NO;
                 }
-                else {
-                    
-                }
             }
             
         }
@@ -181,13 +182,32 @@ replacementString:(NSString *)string{
 }
 
 - (IBAction)ActionCheckButton:(UIButton *)sender {
+    
 }
 
 - (IBAction)ActionSolveButton:(UIButton *)sender {
+    // adapted from: https://www.youtube.com/watch?v=ka5jb_4ZBYs
+    // create nsmarray called sudoku
+    NSMutableArray *sudoku
+    for(int i = 0; i < 9; i++){
+        //create nsmarray called rowTemp
+        for(int j = 0; j < 9; j++){
+            // check if text field has text inside it
+            // if yes put that text into the sudoku at [i][j]
+            // if no put @"0" in the soduku
+        }
+    }
+    // call solve sudoku and store returend array in solvedSudoku
+    for(int i = 0; i < 9; i++){
+        for(int j = 0; j < 9; j++){
+            // put solvedSudoku[i][j] into textField[i][j]
+            // lcok textField[i][j]
+        }
+    }
 }
 - (IBAction)touchOutside:(UIControl *)sender {
     
-    NSLog(@"Touch outside"); // IN HERE DO CHECK ROW,COLUMN & BOX RULE CHECK
+    NSLog(@"Touch outside");
     for(int i = 0; i < [_textFields count]; i++){ // i = row, j = column. This goes through all i's
         for(int j = 0; j < [[_textFields objectAtIndex:i] count]; j++){ // this goes through all j's
             UITextField *tempTextField = [[_textFields objectAtIndex:i] objectAtIndex:j]; // sets up temporary save for textField
@@ -222,7 +242,8 @@ replacementString:(NSString *)string{
                         flag=YES;
                         break;
                     }
-                }else{
+                }
+                else {
                     continue;
                 }
             }
@@ -234,7 +255,7 @@ replacementString:(NSString *)string{
         if (flag) {
             [self generateSudoku];
         }
-        else{
+        else {
             //NSLog(@"field fill =%@",_field);
         }
     }
@@ -323,6 +344,45 @@ replacementString:(NSString *)string{
         return nil;
     }
 }
+
+-(NSMutableArray*)SolveThisSoduku:(NSMutableArray*)soduku{
+    
+    
+    
+}
+
+-(BOOL)IsThereA:(int)n inRow:(int)row inSoduku:(NSMutableArray*)soduku{
+    for(int i = 0; i < 9; i++) {
+        if([[[soduku objectAtIndex:row] objectAtIndex:i] intValue] == n){
+            return YES;
+        }
+    }
+    return NO;
+}
+
+-(BOOL)IsThereA:(int)n inColumn:(int)column inSoduku:(NSMutableArray*)soduku{
+    for(int i = 0; i < 9; i++) {
+        if([[[soduku objectAtIndex:i] objectAtIndex:column] intValue] == n){
+            return YES;
+        }
+    }
+    return NO;
+}
+
+-(BOOL)IsThereA:(int)n inBox:(int)Box inSudoku:(NSMutableArray*)sudoku{
+    int column_offset = 3 * (Box % 3);
+    int row_offset = 3 * (Box / 3);
+    for(int i = 0; i < 9; i++){
+        int column = column_offset + i % 3;
+        int row = row_offset + i / 3;
+        if([[[suduou objectAtIndex:row] objectAtIndex:column] intValue] == n){
+            return YES;
+        }
+    }
+    return NO;
+}
+
+
 
 
     @end

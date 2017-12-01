@@ -36,6 +36,11 @@
 shouldChangeCharactersInRange:(NSRange)range
 replacementString:(NSString *)string;
 
+@property int row;
+@property int column;
+@property int group;
+@property int value;
+
 // Setting up all textFields row by row.
 // Named using coordinate system, top left = (1,1) bottom right = (9,9)
 
