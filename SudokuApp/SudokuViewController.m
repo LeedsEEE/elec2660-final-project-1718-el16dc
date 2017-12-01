@@ -70,7 +70,6 @@
             //textField.returnKeyType = UIReturnKeyDone;
             textField.delegate = self;
             [row addObject:textField];
-            [column addObject:textField]
             [self.view addSubview:textField];
             
         }
@@ -188,16 +187,23 @@ replacementString:(NSString *)string{
 - (IBAction)ActionSolveButton:(UIButton *)sender {
     // adapted from: https://www.youtube.com/watch?v=ka5jb_4ZBYs
     // create nsmarray called sudoku
-    NSMutableArray *sudoku
+    NSMutableArray *sudoku = [NSMutableArray array];
     for(int i = 0; i < 9; i++){
         //create nsmarray called rowTemp
         for(int j = 0; j < 9; j++){
             // check if text field has text inside it
             // if yes put that text into the sudoku at [i][j]
             // if no put @"0" in the soduku
+            UITextField *textField = [[_textFields objectAtIndex:i] objectAtIndex:j];
+            if (textField.text.length > 0) { //https://stackoverflow.com/questions/3173679/objective-c-checking-whether-text-field-is-empty
+                sudoku[i][j] = textField.text;
+            }
+            else{
+                sudoku[i][j] = @"0";
+            }
         }
     }
-    // call solve sudoku and store returend array in solvedSudoku
+    // call solve sudoku and store returned array in solvedSudoku
     for(int i = 0; i < 9; i++){
         for(int j = 0; j < 9; j++){
             // put solvedSudoku[i][j] into textField[i][j]
@@ -345,24 +351,45 @@ replacementString:(NSString *)string{
     }
 }
 
--(NSMutableArray*)SolveThisSoduku:(NSMutableArray*)soduku{
+-(NSMutableArray*)SolveThisSudoku:(NSMutableArray*)sudoku index:(int)index{
     
+    solved = (index > 80);
+    if (solved) return sudoku;
     
+    int row = index / 9;
+    int column = index % 9;
+    int box = (index / 3) % 3 + (index / 9) * 3;
+    int thisValue = [[[sudoku objectAtIndex:row] objectAtIndex:column] intValue];
     
+    if (thisValue != 0) {
+        [self SolveThisSudoku:sudoku index:index+1];
+        if (solved) return sudoku;
+    }
+    else {
+        for (int test_num = 0; test_num < 9; test_num++) {
+            if ([self IsThereA:test_num inBox:box inSudoku:sudoku] && [self IsThereA:test_num inRow:row inSudoku:sudoku] && [self IsThereA:test_num inColumn:column inSudoku:sudoku]){
+                [[sudoku objectAtIndex:row] setObject:[NSString stringWithFormat:@"%d", test_num] atIndex:column];
+                [self SolveThisSudoku:sudoku index:index+1];
+                if (solved) return sudoku;
+            }
+        }
+    }
+    [[sudoku objectAtIndex:row] setObject:@"0" atIndex:column];
+    return sudoku;
 }
 
--(BOOL)IsThereA:(int)n inRow:(int)row inSoduku:(NSMutableArray*)soduku{
+-(BOOL)IsThereA:(int)n inRow:(int)row inSudoku:(NSMutableArray*)sudoku{
     for(int i = 0; i < 9; i++) {
-        if([[[soduku objectAtIndex:row] objectAtIndex:i] intValue] == n){
+        if([[[sudoku objectAtIndex:row] objectAtIndex:i] intValue] == n){
             return YES;
         }
     }
     return NO;
 }
 
--(BOOL)IsThereA:(int)n inColumn:(int)column inSoduku:(NSMutableArray*)soduku{
+-(BOOL)IsThereA:(int)n inColumn:(int)column inSudoku:(NSMutableArray*)sudoku{
     for(int i = 0; i < 9; i++) {
-        if([[[soduku objectAtIndex:i] objectAtIndex:column] intValue] == n){
+        if([[[sudoku objectAtIndex:i] objectAtIndex:column] intValue] == n){
             return YES;
         }
     }
@@ -375,7 +402,7 @@ replacementString:(NSString *)string{
     for(int i = 0; i < 9; i++){
         int column = column_offset + i % 3;
         int row = row_offset + i / 3;
-        if([[[suduou objectAtIndex:row] objectAtIndex:column] intValue] == n){
+        if([[[sudoku objectAtIndex:row] objectAtIndex:column] intValue] == n){
             return YES;
         }
     }

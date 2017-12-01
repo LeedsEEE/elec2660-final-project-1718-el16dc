@@ -41,6 +41,8 @@ replacementString:(NSString *)string;
 @property int group;
 @property int value;
 
+BOOL solved;
+
 // Setting up all textFields row by row.
 // Named using coordinate system, top left = (1,1) bottom right = (9,9)
 
