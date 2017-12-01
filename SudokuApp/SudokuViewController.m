@@ -92,6 +92,8 @@
         self.OutletHintButton.hidden = NO;
         self.OutletCheckButton.hidden = NO;
         self.OutletSolveButton.hidden = YES;
+        self.OutletSolvedButton.hidden = YES;
+        self.OutletHomeButton.hidden = YES;
         _shownNumberCount = 40;
     }
     else if (self.mode==2){
@@ -99,6 +101,8 @@
         self.OutletHintButton.hidden = NO;
         self.OutletCheckButton.hidden = NO;
         self.OutletSolveButton.hidden = YES;
+        self.OutletSolvedButton.hidden = YES;
+        self.OutletHomeButton.hidden = YES;
         _shownNumberCount = 30;
     }
     if (self.mode==3){
@@ -106,6 +110,8 @@
         self.OutletHintButton.hidden = NO;
         self.OutletCheckButton.hidden = NO;
         self.OutletSolveButton.hidden = YES;
+        self.OutletSolvedButton.hidden = YES;
+        self.OutletHomeButton.hidden = YES;
         _shownNumberCount = 20;
     }
     if (self.mode==4){
@@ -113,6 +119,8 @@
         self.OutletHintButton.hidden = YES;
         self.OutletCheckButton.hidden = YES;
         self.OutletSolveButton.hidden = NO;
+        self.OutletSolvedButton.hidden = YES;
+        self.OutletHomeButton.hidden = YES;
         _shownNumberCount = 0;
     }
     [self fillEmptyGrid];
@@ -185,6 +193,8 @@ replacementString:(NSString *)string{
 }
 
 - (IBAction)ActionSolveButton:(UIButton *)sender {
+    
+    
     // adapted from: https://www.youtube.com/watch?v=ka5jb_4ZBYs
     // create nsmarray called sudoku
     NSMutableArray *sudoku = [NSMutableArray array];
@@ -204,12 +214,16 @@ replacementString:(NSString *)string{
         }
     }
     // call solve sudoku and store returned array in solvedSudoku
+    
     for(int i = 0; i < 9; i++){
         for(int j = 0; j < 9; j++){
             // put solvedSudoku[i][j] into textField[i][j]
-            // lcok textField[i][j]
+            // lock textField[i][j]
         }
     }
+}
+
+- (IBAction)ActionHomeButton:(UIButton *)sender {
 }
 - (IBAction)touchOutside:(UIControl *)sender {
     
@@ -353,8 +367,8 @@ replacementString:(NSString *)string{
 
 -(NSMutableArray*)SolveThisSudoku:(NSMutableArray*)sudoku index:(int)index{
     
-    solved = (index > 80);
-    if (solved) return sudoku;
+    _solved = (index > 80);
+    if (_solved) return sudoku;
     
     int row = index / 9;
     int column = index % 9;
@@ -363,14 +377,14 @@ replacementString:(NSString *)string{
     
     if (thisValue != 0) {
         [self SolveThisSudoku:sudoku index:index+1];
-        if (solved) return sudoku;
+        if (_solved) return sudoku;
     }
     else {
         for (int test_num = 0; test_num < 9; test_num++) {
             if ([self IsThereA:test_num inBox:box inSudoku:sudoku] && [self IsThereA:test_num inRow:row inSudoku:sudoku] && [self IsThereA:test_num inColumn:column inSudoku:sudoku]){
                 [[sudoku objectAtIndex:row] setObject:[NSString stringWithFormat:@"%d", test_num] atIndex:column];
                 [self SolveThisSudoku:sudoku index:index+1];
-                if (solved) return sudoku;
+                if (_solved) return sudoku;
             }
         }
     }

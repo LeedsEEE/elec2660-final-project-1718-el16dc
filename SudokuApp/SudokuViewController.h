@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Sudoku.h"
-#import "DownPicker.h"//
+//#import "DownPicker.h"//
 #import "Sudoku.h"
 // Found from https://cocoapods.org/?q=lang%3Aobjc%20Downpicker
 
@@ -31,6 +31,8 @@
 - (IBAction)ActionCheckButton:(UIButton *)sender;
 - (IBAction)ActionSolveButton:(UIButton *)sender;
 
+
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;
 - (BOOL)textField:(UITextField *)textField
 shouldChangeCharactersInRange:(NSRange)range
@@ -41,7 +43,7 @@ replacementString:(NSString *)string;
 @property int group;
 @property int value;
 
-BOOL solved;
+@property BOOL solved;
 
 // Setting up all textFields row by row.
 // Named using coordinate system, top left = (1,1) bottom right = (9,9)
