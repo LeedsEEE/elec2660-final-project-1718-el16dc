@@ -18,140 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //[self.sudokuData generateSudoku];
 
-    // Do any additional setup after loading the view.
-    // create the array of data
-    //NSMutableArray* number1Array = [[NSMutableArray alloc] init];
-    
-    // add some sample data
-   /* [number1Array addObject:@" "];
-    [number1Array addObject:@"1"];
-    [number1Array addObject:@"2"];
-    [number1Array addObject:@"3"];
-    [number1Array addObject:@"4"];
-    [number1Array addObject:@"5"];
-    [number1Array addObject:@"6"];
-    [number1Array addObject:@"7"];
-    [number1Array addObject:@"8"];
-    [number1Array addObject:@"9"];
-    
-    // bind yourTextField to DownPicker
-    
-    
-    //self.downPicker1 = [[DownPicker alloc] initWithTextField:self.downPicker1 withData:number1Array];
-    //self.downPicker = [[DownPicker alloc] initWithTextField:_textField withData:number1Array];
-    */
-    
-    
-    /*NSMutableArray* firstRow = [[NSMutableArray alloc] init];
-    [firstRow addObject:_textField11];
-    [firstRow addObject:_textField12];
-    [firstRow addObject:_textField13];
-    [firstRow addObject:_textField14];
-    [firstRow addObject:_textField15];
-    [firstRow addObject:_textField16];
-    [firstRow addObject:_textField17];
-    [firstRow addObject:_textField18];
-    [firstRow addObject:_textField19];
-    
-    NSMutableArray* secondRow = [[NSMutableArray alloc] init];
-    [firstRow addObject:_textField21];
-    [firstRow addObject:_textField22];
-    [firstRow addObject:_textField23];
-    [firstRow addObject:_textField24];
-    [firstRow addObject:_textField25];
-    [firstRow addObject:_textField26];
-    [firstRow addObject:_textField27];
-    [firstRow addObject:_textField28];
-    [firstRow addObject:_textField29];
-    
-    NSMutableArray* thirdRow = [[NSMutableArray alloc] init];
-    [firstRow addObject:_textField31];
-    [firstRow addObject:_textField32];
-    [firstRow addObject:_textField33];
-    [firstRow addObject:_textField34];
-    [firstRow addObject:_textField35];
-    [firstRow addObject:_textField36];
-    [firstRow addObject:_textField37];
-    [firstRow addObject:_textField38];
-    [firstRow addObject:_textField39];
-    
-    NSMutableArray* fourthRow = [[NSMutableArray alloc] init];
-    [firstRow addObject:_textField41];
-    [firstRow addObject:_textField42];
-    [firstRow addObject:_textField43];
-    [firstRow addObject:_textField44];
-    [firstRow addObject:_textField45];
-    [firstRow addObject:_textField46];
-    [firstRow addObject:_textField47];
-    [firstRow addObject:_textField48];
-    [firstRow addObject:_textField49];
-    
-    NSMutableArray* fifthRow = [[NSMutableArray alloc] init];
-    [firstRow addObject:_textField51];
-    [firstRow addObject:_textField52];
-    [firstRow addObject:_textField53];
-    [firstRow addObject:_textField54];
-    [firstRow addObject:_textField55];
-    [firstRow addObject:_textField56];
-    [firstRow addObject:_textField57];
-    [firstRow addObject:_textField58];
-    [firstRow addObject:_textField59];
-    
-    NSMutableArray* sixthRow = [[NSMutableArray alloc] init];
-    [firstRow addObject:_textField61];
-    [firstRow addObject:_textField62];
-    [firstRow addObject:_textField63];
-    [firstRow addObject:_textField64];
-    [firstRow addObject:_textField65];
-    [firstRow addObject:_textField66];
-    [firstRow addObject:_textField67];
-    [firstRow addObject:_textField68];
-    [firstRow addObject:_textField69];
-    
-    NSMutableArray* seventhRow = [[NSMutableArray alloc] init];
-    [firstRow addObject:_textField71];
-    [firstRow addObject:_textField72];
-    [firstRow addObject:_textField73];
-    [firstRow addObject:_textField74];
-    [firstRow addObject:_textField75];
-    [firstRow addObject:_textField76];
-    [firstRow addObject:_textField77];
-    [firstRow addObject:_textField78];
-    [firstRow addObject:_textField79];
-    
-    NSMutableArray* eighthRow = [[NSMutableArray alloc] init];
-    [firstRow addObject:_textField81];
-    [firstRow addObject:_textField82];
-    [firstRow addObject:_textField83];
-    [firstRow addObject:_textField84];
-    [firstRow addObject:_textField85];
-    [firstRow addObject:_textField86];
-    [firstRow addObject:_textField87];
-    [firstRow addObject:_textField88];
-    [firstRow addObject:_textField89];
-    
-    NSMutableArray* ninthRow = [[NSMutableArray alloc] init];
-    [firstRow addObject:_textField91];
-    [firstRow addObject:_textField92];
-    [firstRow addObject:_textField93];
-    [firstRow addObject:_textField94];
-    [firstRow addObject:_textField95];
-    [firstRow addObject:_textField96];
-    [firstRow addObject:_textField97];
-    [firstRow addObject:_textField98];
-    [firstRow addObject:_textField99];
-    
-        [_textFields addObject:firstRow];
-    [_textFields addObject:secondRow];
-    [_textFields addObject:thirdRow];
-    [_textFields addObject:fourthRow];
-    [_textFields addObject:fifthRow];
-    [_textFields addObject:sixthRow];
-    [_textFields addObject:seventhRow];
-    [_textFields addObject:eighthRow];
-    [_textFields addObject:ninthRow];*/
     _textFields = [[NSMutableArray alloc]init];
 
     
@@ -202,23 +69,10 @@
             textField.delegate = self;
             [row addObject:textField];
             [self.view addSubview:textField];
-            NSLog(@"textField name = %@", textField.restorationIdentifier);
             
         }
      [_textFields addObject:row];
      
-     for (int i = 0; i <= 8; i++) {
-         NSLog(@"%d, %d, %d, %d, %d, %d, %d, %d, %d",
-               [(NSNumber *)[self.field objectAtIndex:(0 + 9*i)] intValue],
-               [(NSNumber *)[self.field objectAtIndex:(1 + 9*i)] intValue],
-               [(NSNumber *)[self.field objectAtIndex:(2 + 9*i)] intValue],
-               [(NSNumber *)[self.field objectAtIndex:(3 + 9*i)] intValue],
-               [(NSNumber *)[self.field objectAtIndex:(4 + 9*i)] intValue],
-               [(NSNumber *)[self.field objectAtIndex:(5 + 9*i)] intValue],
-               [(NSNumber *)[self.field objectAtIndex:(6 + 9*i)] intValue],
-               [(NSNumber *)[self.field objectAtIndex:(7 + 9*i)] intValue],
-               [(NSNumber *)[self.field objectAtIndex:(8 + 9*i)] intValue]);
-     }
     }
 /*
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -261,7 +115,7 @@
     }
     [self fillEmptyGrid];
     [self generateSudoku];
-    
+
     NSMutableArray *selectedNumbers = [self GenerateNRandomNumbers:_shownNumberCount];
     for(int i = 0; i < _field.count; i++){
         for(int j = 0; j < [[_field objectAtIndex:i] count]; j++){
@@ -275,21 +129,6 @@
             
         }
     }
-    
-    /*
-    for (int i = 0; i <= 8; i++) {
-        NSInteger a = [(NSNumber *)[self.field objectAtIndex:(0 + 9*i)] intValue];
-        NSInteger b = [(NSNumber *)[self.field objectAtIndex:(1 + 9*i)] intValue];
-        NSInteger c = [(NSNumber *)[self.field objectAtIndex:(2 + 9*i)] intValue];
-        NSInteger d = [(NSNumber *)[self.field objectAtIndex:(3 + 9*i)] intValue];
-        NSInteger e = [(NSNumber *)[self.field objectAtIndex:(4 + 9*i)] intValue];
-        NSInteger f = [(NSNumber *)[self.field objectAtIndex:(5 + 9*i)] intValue];
-        NSInteger g = [(NSNumber *)[self.field objectAtIndex:(6 + 9*i)] intValue];
-        NSInteger h = [(NSNumber *)[self.field objectAtIndex:(7 + 9*i)] intValue];
-        NSInteger k = [(NSNumber *)[self.field objectAtIndex:(8 + 9*i)] intValue];
-        NSLog(@"%d, %d, %d, %d, %d, %d, %d, %d, %ld", a, b, c, d, e, f, g, h, k);
-                  }
-    */
 }
 
 
@@ -322,6 +161,23 @@ replacementString:(NSString *)string{
 }
 
 - (IBAction)ActionHintButton:(UIButton *)sender {
+
+    NSMutableArray *numberReveal = [self GenerateNRandomNumbers:1];
+    for(int i = 0; i < _field.count; i++){
+        for(int j = 0; j < [[_field objectAtIndex:i] count]; j++){
+            for(int n = 0; n < [numberReveal count]; n++){
+                if([[numberReveal objectAtIndex:n] intValue] == i + j*9){
+                    UITextField *currentTextField = [[_textFields objectAtIndex:i] objectAtIndex:j];
+                    currentTextField.text = [NSString stringWithFormat:@"%@", [[_field objectAtIndex:i] objectAtIndex:j]];
+                    currentTextField.userInteractionEnabled = NO;
+                }
+                else {
+                    
+                }
+            }
+            
+        }
+    }
 }
 
 - (IBAction)ActionCheckButton:(UIButton *)sender {
@@ -379,30 +235,7 @@ replacementString:(NSString *)string{
             [self generateSudoku];
         }
         else{
-            for(int i = 0; i < _field.count; i++){
-                for(int j = 0; j < [[_field objectAtIndex:i] count]; j++){
-                    
-                    //[[[[textFields objectAtIndex:i] objectAtIndex:j] textLabel] setText: [NSString stringWithFormat:@"%@", [[_field objectAtIndex:i] objectAtIndex:j]]];
-                }
-            }
-            
-            NSLog(@"field fill =%@",_field);
-            
-           
-            /*
-            for (int i = 0; i <= 8; i++) {
-            NSLog(@"%d, %d, %d, %d, %d, %d, %d, %d, %d",
-                      [(NSNumber *)[self.field objectAtIndex:(0 + 9*i)] intValue],
-                      [(NSNumber *)[self.field objectAtIndex:(1 + 9*i)] intValue],
-                      [(NSNumber *)[self.field objectAtIndex:(2 + 9*i)] intValue],
-                      [(NSNumber *)[self.field objectAtIndex:(3 + 9*i)] intValue],
-                      [(NSNumber *)[self.field objectAtIndex:(4 + 9*i)] intValue],
-                      [(NSNumber *)[self.field objectAtIndex:(5 + 9*i)] intValue],
-                      [(NSNumber *)[self.field objectAtIndex:(6 + 9*i)] intValue],
-                      [(NSNumber *)[self.field objectAtIndex:(7 + 9*i)] intValue],
-                      [(NSNumber *)[self.field objectAtIndex:(8 + 9*i)] intValue]);
-            }
-             */
+            //NSLog(@"field fill =%@",_field);
         }
     }
 }
