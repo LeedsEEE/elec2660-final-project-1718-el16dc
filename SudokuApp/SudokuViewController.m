@@ -230,33 +230,52 @@
                                                  name:UIKeyboardDidHideNotification
                                                object:nil];
     */
+    _shownNumberCount = 81;
     if (self.mode==1){
         NSLog(@"Game Mode = Easy");
         self.OutletHintButton.hidden = NO;
         self.OutletCheckButton.hidden = NO;
         self.OutletSolveButton.hidden = YES;
+        _shownNumberCount = 40;
     }
     else if (self.mode==2){
         NSLog(@"Game Mode = Moderate");
         self.OutletHintButton.hidden = NO;
         self.OutletCheckButton.hidden = NO;
         self.OutletSolveButton.hidden = YES;
+        _shownNumberCount = 30;
     }
     if (self.mode==3){
         NSLog(@"Game Mode = Hard");
         self.OutletHintButton.hidden = NO;
         self.OutletCheckButton.hidden = NO;
         self.OutletSolveButton.hidden = YES;
+        _shownNumberCount = 20;
     }
     if (self.mode==4){
         NSLog(@"Game Mode = Solver");
         self.OutletHintButton.hidden = YES;
         self.OutletCheckButton.hidden = YES;
         self.OutletSolveButton.hidden = NO;
+        _shownNumberCount = 0;
+    }
+    [self fillEmptyGrid];
+    [self generateSudoku];
+    
+    NSMutableArray *selectedNumbers = [self GenerateNRandomNumbers:_shownNumberCount];
+    for(int i = 0; i < _field.count; i++){
+        for(int j = 0; j < [[_field objectAtIndex:i] count]; j++){
+            for(int n = 0; n < [selectedNumbers count]; n++){
+                if([[selectedNumbers objectAtIndex:n] intValue] == i + j*9){
+                    UITextField *currentTextField = [[_textFields objectAtIndex:i] objectAtIndex:j];
+                    currentTextField.text = [NSString stringWithFormat:@"%@", [[_field objectAtIndex:i] objectAtIndex:j]];
+                    currentTextField.userInteractionEnabled = NO;
+                }
+            }
+            
+        }
     }
     
-    [self generateSudoku];
-    [self fillEmptyGrid];
     /*
     for (int i = 0; i <= 8; i++) {
         NSInteger a = [(NSNumber *)[self.field objectAtIndex:(0 + 9*i)] intValue];
@@ -360,8 +379,14 @@ replacementString:(NSString *)string{
             [self generateSudoku];
         }
         else{
+            for(int i = 0; i < _field.count; i++){
+                for(int j = 0; j < [[_field objectAtIndex:i] count]; j++){
+                    
+                    //[[[[textFields objectAtIndex:i] objectAtIndex:j] textLabel] setText: [NSString stringWithFormat:@"%@", [[_field objectAtIndex:i] objectAtIndex:j]]];
+                }
+            }
+            
             NSLog(@"field fill =%@",_field);
-            NSLog(@"tiger%@",_textFields);
             
            
             /*
@@ -426,6 +451,26 @@ replacementString:(NSString *)string{
         [ar addObject:_field[b][j]];
     }
     return ar;
+}
+
+-(NSMutableArray*)GenerateNRandomNumbers:(int)n{
+    NSMutableArray *array = [NSMutableArray array];
+    for(int i = 0; i < n; i++){
+        [array addObject:[NSString stringWithFormat:@"%d", [self GenerateNumberNotInArray:array]]];      //using nsstring as a container
+    }
+    return array;
+    
+}
+
+-(int)GenerateNumberNotInArray:(NSMutableArray*) array{
+    int r = arc4random() % 81;
+    for(int i = 0; i < array.count; i++){
+        int currentNumber = [[array objectAtIndex:i] intValue];
+        if(currentNumber == r){
+            r = [self GenerateNumberNotInArray:array];
+        }
+    }
+    return r;
 }
 
 -(NSString *)getRandomCol:(NSMutableArray *)col rowA:(NSMutableArray *)row box:(NSMutableArray *)box{
