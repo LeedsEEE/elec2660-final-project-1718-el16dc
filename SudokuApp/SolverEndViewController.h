@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SolverEndViewController : UIViewController
+@interface SolverEndViewController : UIViewController<UITextFieldDelegate>
 
-@property (strong, nonatomic) NSMutableArray *soduku;
+@property (strong, nonatomic) NSMutableArray *SolvedSudoku;
+
+- (IBAction)ActionHomeButton:(UIButton *)sender;
+
+@property (strong, nonatomic) NSMutableArray* textFields; // Array of all text fields
+@property NSMutableArray *field;
 
 @end

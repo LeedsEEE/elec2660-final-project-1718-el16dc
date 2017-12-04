@@ -16,6 +16,7 @@
 @end
 
 @implementation SudokuViewController
+@synthesize SolvedSudoku;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -193,6 +194,8 @@ replacementString:(NSString *)string{
     NSMutableArray *sudoku = [NSMutableArray array];
     for(int i = 0; i < 9; i++){
         //create nsmarray called rowTemp
+        NSMutableArray *tempRow = [NSMutableArray array];
+        [sudoku addObject:tempRow];
         for(int j = 0; j < 9; j++){
             // check if text field has text inside it
             // if yes put that text into the sudoku at [i][j]
@@ -208,13 +211,9 @@ replacementString:(NSString *)string{
     }
     // call solve sudoku and store returned array in solvedSudoku
     
-    for(int i = 0; i < 9; i++){
-        for(int j = 0; j < 9; j++){
-            // put solvedSudoku[i][j] into textField[i][j]
-            // lock textField[i][j]
-        }
-    }
-            [self performSegueWithIdentifier:@"GameToSolved" sender:self]; // completes segue to next screen on press of "GO"
+    self.SolvedSudoku = [self SolveThisSudoku:sudoku index:0];
+    
+    [self performSegueWithIdentifier:@"GameToSolved" sender:self]; // completes segue to next screen on press of "GO"
     
 }
 
@@ -365,19 +364,20 @@ replacementString:(NSString *)string{
     
     int row = index / 9;
     int column = index % 9;
-    int box = (index / 3) % 3 + (index / 9) * 3;
+    int box = (row / 3) % 3 + (column / 3) * 3;
     int thisValue = [[[sudoku objectAtIndex:row] objectAtIndex:column] intValue];
     
     if (thisValue != 0) {
-        [self SolveThisSudoku:sudoku index:index+1];
+        sudoku = [self SolveThisSudoku:sudoku index:index+1];
         if (_solved) return sudoku;
     }
     else {
-        for (int test_num = 0; test_num < 9; test_num++) {
-            if ([self IsThereA:test_num inBox:box inSudoku:sudoku] && [self IsThereA:test_num inRow:row inSudoku:sudoku] && [self IsThereA:test_num inColumn:column inSudoku:sudoku]){
+        for (int test_num = 1; test_num < 10; test_num++) {
+            if (![self IsThereA:test_num inBox:box inSudoku:sudoku] && ![self IsThereA:test_num inRow:row inSudoku:sudoku] && ![self IsThereA:test_num inColumn:column inSudoku:sudoku]){
                 [[sudoku objectAtIndex:row] setObject:[NSString stringWithFormat:@"%d", test_num] atIndex:column];
-                [self SolveThisSudoku:sudoku index:index+1];
+                sudoku = [self SolveThisSudoku:sudoku index:index+1];
                 if (_solved) return sudoku;
+                //SolvedSudoku = sudoku;
             }
         }
     }
@@ -404,11 +404,11 @@ replacementString:(NSString *)string{
 }
 
 -(BOOL)IsThereA:(int)n inBox:(int)Box inSudoku:(NSMutableArray*)sudoku{
-    int column_offset = 3 * (Box % 3);
-    int row_offset = 3 * (Box / 3);
+    int column_offset = 3 * (Box / 3);
+    int row_offset = 3 * (Box % 3);
     for(int i = 0; i < 9; i++){
-        int column = column_offset + i % 3;
-        int row = row_offset + i / 3;
+        int column = column_offset + i / 3;
+        int row = row_offset + i % 3;
         if([[[sudoku objectAtIndex:row] objectAtIndex:column] intValue] == n){
             return YES;
         }
@@ -418,13 +418,11 @@ replacementString:(NSString *)string{
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
-    SudokuViewController *destination = [segue destinationViewController];
-    
-    destination.mode = self.mode; // used to send the integer "mode" to next page to determine buttons shown
-    
-    if([[segue identifier] isEqualToString:@""]){
-        SolverEndViewController *vc = segue.destinationViewController;
-        vc.soduku = 
+    if([[segue identifier] isEqualToString:@"GameToSolved"]){
+        SolverEndViewController *tvc = segue.destinationViewController;
+        NSLog(@">> solved sudoku segued: %@", self.SolvedSudoku);
+        tvc.SolvedSudoku = self.SolvedSudoku;
+        
     }
     
     
