@@ -203,6 +203,7 @@ replacementString:(NSString *)string{
             UITextField *textField = [[_textFields objectAtIndex:i] objectAtIndex:j];
             if (textField.text.length > 0) { //https://stackoverflow.com/questions/3173679/objective-c-checking-whether-text-field-is-empty
                 sudoku[i][j] = textField.text;
+                
             }
             else{
                 sudoku[i][j] = @"0";
@@ -213,7 +214,7 @@ replacementString:(NSString *)string{
     
     self.SolvedSudoku = [self SolveThisSudoku:sudoku index:0];
     
-    [self performSegueWithIdentifier:@"GameToSolved" sender:self]; // completes segue to next screen on press of "GO"
+    [self performSegueWithIdentifier:@"GameToSolved" sender:self];
     
 }
 
