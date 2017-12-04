@@ -380,8 +380,9 @@ replacementString:(NSString *)string{
                 //SolvedSudoku = sudoku;
             }
         }
+        [[sudoku objectAtIndex:row] setObject:@"0" atIndex:column];
     }
-    [[sudoku objectAtIndex:row] setObject:@"0" atIndex:column];
+    
     return sudoku;
 }
 
