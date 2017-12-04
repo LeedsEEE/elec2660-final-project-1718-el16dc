@@ -202,7 +202,7 @@
                         <outlet property="OutletHintButton" destination="yzu-El-X7I" id="fpw-rQ-DcG"/>
                         <outlet property="OutletSolveButton" destination="LUh-yz-zGB" id="yHC-UC-NSE"/>
                         <segue destination="9Dz-gL-eNj" kind="show" identifier="GameToEnd" id="yFQ-TB-bzd"/>
-                        <segue destination="r1J-rc-0RW" kind="show" id="UeK-FN-j1b"/>
+                        <segue destination="r1J-rc-0RW" kind="show" identifier="GameToSolved" id="UeK-FN-j1b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1cg-ff-wKc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -933,7 +933,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" id="m9c-ZH-Qez"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="SolvedToHome" id="m9c-ZH-Qez"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IsH-Ph-QFi" userLabel="First Responder" sceneMemberID="firstResponder"/>

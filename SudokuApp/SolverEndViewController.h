@@ -10,4 +10,6 @@
 
 @interface SolverEndViewController : UIViewController
 
+@property (strong, nonatomic) NSMutableArray *soduku;
+
 @end

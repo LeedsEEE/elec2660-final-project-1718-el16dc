@@ -7,6 +7,7 @@
 //
 
 #import "SudokuViewController.h"
+#import "SolverEndViewController.h"
 
 
 @interface SudokuViewController ()
@@ -92,8 +93,6 @@
         self.OutletHintButton.hidden = NO;
         self.OutletCheckButton.hidden = NO;
         self.OutletSolveButton.hidden = YES;
-        self.OutletSolvedButton.hidden = YES;
-        self.OutletHomeButton.hidden = YES;
         _shownNumberCount = 40;
     }
     else if (self.mode==2){
@@ -101,8 +100,6 @@
         self.OutletHintButton.hidden = NO;
         self.OutletCheckButton.hidden = NO;
         self.OutletSolveButton.hidden = YES;
-        self.OutletSolvedButton.hidden = YES;
-        self.OutletHomeButton.hidden = YES;
         _shownNumberCount = 30;
     }
     if (self.mode==3){
@@ -110,8 +107,6 @@
         self.OutletHintButton.hidden = NO;
         self.OutletCheckButton.hidden = NO;
         self.OutletSolveButton.hidden = YES;
-        self.OutletSolvedButton.hidden = YES;
-        self.OutletHomeButton.hidden = YES;
         _shownNumberCount = 20;
     }
     if (self.mode==4){
@@ -119,8 +114,6 @@
         self.OutletHintButton.hidden = YES;
         self.OutletCheckButton.hidden = YES;
         self.OutletSolveButton.hidden = NO;
-        self.OutletSolvedButton.hidden = YES;
-        self.OutletHomeButton.hidden = YES;
         _shownNumberCount = 0;
     }
     [self fillEmptyGrid];
@@ -221,10 +214,10 @@ replacementString:(NSString *)string{
             // lock textField[i][j]
         }
     }
+            [self performSegueWithIdentifier:@"GameToSolved" sender:self]; // completes segue to next screen on press of "GO"
+    
 }
 
-- (IBAction)ActionHomeButton:(UIButton *)sender {
-}
 - (IBAction)touchOutside:(UIControl *)sender {
     
     NSLog(@"Touch outside");
@@ -423,7 +416,19 @@ replacementString:(NSString *)string{
     return NO;
 }
 
-
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    SudokuViewController *destination = [segue destinationViewController];
+    
+    destination.mode = self.mode; // used to send the integer "mode" to next page to determine buttons shown
+    
+    if([[segue identifier] isEqualToString:@""]){
+        SolverEndViewController *vc = segue.destinationViewController;
+        vc.soduku = 
+    }
+    
+    
+}
 
 
     @end
