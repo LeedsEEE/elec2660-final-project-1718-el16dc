@@ -68,6 +68,7 @@
             textField.textAlignment = NSTextAlignmentCenter;
             textField.keyboardType = UIKeyboardTypeNumberPad;
             [textField setFont:[UIFont systemFontOfSize:25]];
+            textField.clearsOnBeginEditing = YES;
             //textField.restorationIdentifier = textField i j;
             //textField.returnKeyType = UIReturnKeyDone;
             textField.delegate = self;
@@ -225,7 +226,10 @@ replacementString:(NSString *)string{
         for(int j = 0; j < [[_textFields objectAtIndex:i] count]; j++){ // this goes through all j's
             UITextField *tempTextField = [[_textFields objectAtIndex:i] objectAtIndex:j]; // sets up temporary save for textField
             if([tempTextField isFirstResponder]){ // checks if first responder, which it always is
-                [tempTextField resignFirstResponder];// forces it again to be first responder in order to input the number into the text field once the kepad is dismissed
+                [tempTextField resignFirstResponder];
+            }
+            if (_checkIfFinished = YES){
+                
             }
         }
     }
@@ -428,6 +432,18 @@ replacementString:(NSString *)string{
     }
     
     
+}
+
+-(BOOL) checkIfFinished{
+    for (int i = 0; i < 9; i++){
+        for (int j = 0; j < 9; j++){
+            UITextField *textField = [[_textFields objectAtIndex:i] objectAtIndex:j];
+            if (textField.text.length > 0) {
+                return YES;
+            }
+        }
+    }
+    return NO;
 }
 
 
