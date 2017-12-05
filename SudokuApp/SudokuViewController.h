@@ -59,6 +59,7 @@ replacementString:(NSString *)string;
 
 @property (strong, nonatomic) NSMutableArray* textFields; // Array of all text fields
 @property NSMutableArray *field;
+@property NSMutableArray *sudoku;
 @property int shownNumberCount;
 
 @property (strong, nonatomic) NSMutableArray* SolvedSudoku;

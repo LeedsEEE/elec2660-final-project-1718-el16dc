@@ -312,6 +312,9 @@
                                 <state key="normal" title="Home" backgroundImage="White Square">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="ActionHomeButton:" destination="9Dz-gL-eNj" eventType="touchUpInside" id="sH0-Cf-rVY"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -328,7 +331,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" id="aGQ-zC-flf"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="GameEndToHome" id="aGQ-zC-flf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fpb-39-A79" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -342,6 +345,6 @@
         <image name="White Square" width="833" height="214"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="m9c-ZH-Qez"/>
+        <segue reference="aGQ-zC-flf"/>
     </inferredMetricsTieBreakers>
 </document>

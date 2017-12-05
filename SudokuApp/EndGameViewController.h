@@ -10,4 +10,6 @@
 
 @interface EndGameViewController : UIViewController
 
+- (IBAction)ActionHomeButton:(UIButton *)sender;
+
 @end

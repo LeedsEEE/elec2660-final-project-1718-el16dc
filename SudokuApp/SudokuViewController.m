@@ -22,8 +22,7 @@
     [super viewDidLoad];
 
     _textFields = [[NSMutableArray alloc]init];
-
-    
+    self.sudoku = [NSMutableArray array];
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
     CGFloat screenHeight = screenRect.size.height;
@@ -67,7 +66,8 @@
 
             textField.textAlignment = NSTextAlignmentCenter;
             textField.keyboardType = UIKeyboardTypeNumberPad;
-            [textField setFont:[UIFont systemFontOfSize:25]];
+            //[textField setFont:[UIFont systemFontOfSize:25]];
+            [textField setFont:[UIFont fontWithName:@"Arial" size:28]];
             textField.clearsOnBeginEditing = YES;
             //textField.restorationIdentifier = textField i j;
             //textField.returnKeyType = UIReturnKeyDone;
@@ -129,6 +129,7 @@
                     UITextField *currentTextField = [[_textFields objectAtIndex:i] objectAtIndex:j];
                     currentTextField.text = [NSString stringWithFormat:@"%@", [[_field objectAtIndex:i] objectAtIndex:j]];
                     currentTextField.userInteractionEnabled = NO;
+                    [currentTextField setFont:[UIFont fontWithName:@"Arial-BoldMT" size:30]];
                 }
             }
             
@@ -185,35 +186,62 @@ replacementString:(NSString *)string{
 
 - (IBAction)ActionCheckButton:(UIButton *)sender {
     
+    [self UpdateSudoku];
+    [self HighlightIfWrong:_sudoku];
+    
+    NSLog(@"_soduku: %@", _sudoku);
+    if ([self CheckThisSudoku:_sudoku]) {
+        [self performSegueWithIdentifier:@"GameToEnd" sender:self];
+    }
+    
+}
+
+-(BOOL)CheckThisSudoku:(NSMutableArray*)sudoku{
+    for(int i = 0; i < 9; i++){
+        for(int j = 0; j < 9; j++){
+            int box = (i / 3) % 3 + (j / 3) * 3;
+            int test_num = [[[sudoku objectAtIndex:i] objectAtIndex:j] intValue];
+            [[sudoku objectAtIndex:i] replaceObjectAtIndex:j withObject:@"0"];
+            
+            if ([self IsThereA:test_num inBox:box inSudoku:sudoku] || [self IsThereA:test_num inRow:i inSudoku:sudoku] || [self IsThereA:test_num inColumn:j inSudoku:sudoku]){
+                [[sudoku objectAtIndex:i] replaceObjectAtIndex:j withObject:[NSString stringWithFormat:@"%d", test_num]];
+                return NO;
+            }
+            [[sudoku objectAtIndex:i] replaceObjectAtIndex:j withObject:[NSString stringWithFormat:@"%d", test_num]];
+        }
+    }
+    return YES;
+}
+
+-(void)HighlightIfWrong:(NSMutableArray*)sudoku{
+    for(int i = 0; i < 9; i++){
+        for(int j = 0; j < 9; j++){
+            int box = (i / 3) % 3 + (j / 3) * 3;
+            int test_num = [[[sudoku objectAtIndex:i] objectAtIndex:j] intValue];
+            [[sudoku objectAtIndex:i] replaceObjectAtIndex:j withObject:@"0"];
+            UITextField *currentTextField = [[_textFields objectAtIndex:i] objectAtIndex:j];
+            if ([self IsThereA:test_num inBox:box inSudoku:sudoku] || [self IsThereA:test_num inRow:i inSudoku:sudoku] || [self IsThereA:test_num inColumn:j inSudoku:sudoku]){
+                currentTextField.textColor = [UIColor redColor];
+                
+            }
+            else{
+                currentTextField.textColor = [UIColor blackColor];
+            }
+            [[sudoku objectAtIndex:i] replaceObjectAtIndex:j withObject:[NSString stringWithFormat:@"%d", test_num]];
+        }
+    }
 }
 
 - (IBAction)ActionSolveButton:(UIButton *)sender {
     
     
     // adapted from: https://www.youtube.com/watch?v=ka5jb_4ZBYs
-    // create nsmarray called sudoku
-    NSMutableArray *sudoku = [NSMutableArray array];
-    for(int i = 0; i < 9; i++){
-        //create nsmarray called rowTemp
-        NSMutableArray *tempRow = [NSMutableArray array];
-        [sudoku addObject:tempRow];
-        for(int j = 0; j < 9; j++){
-            // check if text field has text inside it
-            // if yes put that text into the sudoku at [i][j]
-            // if no put @"0" in the soduku
-            UITextField *textField = [[_textFields objectAtIndex:i] objectAtIndex:j];
-            if (textField.text.length > 0) { //https://stackoverflow.com/questions/3173679/objective-c-checking-whether-text-field-is-empty
-                sudoku[i][j] = textField.text;
-                
-            }
-            else{
-                sudoku[i][j] = @"0";
-            }
-        }
-    }
+    
+    [self UpdateSudoku];
+
     // call solve sudoku and store returned array in solvedSudoku
     
-    self.SolvedSudoku = [self SolveThisSudoku:sudoku index:0];
+    self.SolvedSudoku = [self SolveThisSudoku:self.sudoku index:0];
     
     [self performSegueWithIdentifier:@"GameToSolved" sender:self];
     
@@ -227,9 +255,6 @@ replacementString:(NSString *)string{
             UITextField *tempTextField = [[_textFields objectAtIndex:i] objectAtIndex:j]; // sets up temporary save for textField
             if([tempTextField isFirstResponder]){ // checks if first responder, which it always is
                 [tempTextField resignFirstResponder];
-            }
-            if (_checkIfFinished = YES){
-                
             }
         }
     }
@@ -273,7 +298,7 @@ replacementString:(NSString *)string{
             [self generateSudoku];
         }
         else {
-            //NSLog(@"field fill =%@",_field);
+            NSLog(@"field fill =%@",_field);
         }
     }
 }
@@ -391,7 +416,7 @@ replacementString:(NSString *)string{
     return sudoku;
 }
 
--(BOOL)IsThereA:(int)n inRow:(int)row inSudoku:(NSMutableArray*)sudoku{
+-(BOOL)IsThereA:(int)n inRow:(int)row inSudoku:(NSArray*)sudoku{
     for(int i = 0; i < 9; i++) {
         if([[[sudoku objectAtIndex:row] objectAtIndex:i] intValue] == n){
             return YES;
@@ -400,7 +425,7 @@ replacementString:(NSString *)string{
     return NO;
 }
 
--(BOOL)IsThereA:(int)n inColumn:(int)column inSudoku:(NSMutableArray*)sudoku{
+-(BOOL)IsThereA:(int)n inColumn:(int)column inSudoku:(NSArray*)sudoku{
     for(int i = 0; i < 9; i++) {
         if([[[sudoku objectAtIndex:i] objectAtIndex:column] intValue] == n){
             return YES;
@@ -409,7 +434,7 @@ replacementString:(NSString *)string{
     return NO;
 }
 
--(BOOL)IsThereA:(int)n inBox:(int)Box inSudoku:(NSMutableArray*)sudoku{
+-(BOOL)IsThereA:(int)n inBox:(int)Box inSudoku:(NSArray*)sudoku{
     int column_offset = 3 * (Box / 3);
     int row_offset = 3 * (Box % 3);
     for(int i = 0; i < 9; i++){
@@ -426,6 +451,9 @@ replacementString:(NSString *)string{
     
     if([[segue identifier] isEqualToString:@"GameToSolved"]){
         SolverEndViewController *tvc = segue.destinationViewController;
+        
+
+        
         NSLog(@">> solved sudoku segued: %@", self.SolvedSudoku);
         tvc.SolvedSudoku = self.SolvedSudoku;
         
@@ -434,18 +462,32 @@ replacementString:(NSString *)string{
     
 }
 
--(BOOL) checkIfFinished{
-    for (int i = 0; i < 9; i++){
-        for (int j = 0; j < 9; j++){
+-(void)UpdateSudoku{
+    // adapted from: https://www.youtube.com/watch?v=ka5jb_4ZBYs
+    // create nsmarray called sudoku
+    
+    for(int i = 0; i < 9; i++){
+        //create nsmarray called rowTemp
+        NSMutableArray *tempRow = [NSMutableArray array];
+        [self.sudoku addObject:tempRow];
+        for(int j = 0; j < 9; j++){
+            // check if text field has text inside it
+            // if yes put that text into the sudoku at [i][j]
+            // if no put @"0" in the soduku
             UITextField *textField = [[_textFields objectAtIndex:i] objectAtIndex:j];
-            if (textField.text.length > 0) {
-                return YES;
+            if (textField.text.length > 0) { //https://stackoverflow.com/questions/3173679/objective-c-checking-whether-text-field-is-empty
+                //self.sudoku[i][j] = textField.text;
+                NSString *a = textField.text;
+                NSString *b = [NSString stringWithFormat:@"%@*", a];
+                self.sudoku[i][j] = b;
+                
+            }
+            else{
+                self.sudoku[i][j] = @"0";
             }
         }
     }
-    return NO;
 }
-
 
     @end
 

@@ -34,4 +34,7 @@
 }
 */
 
+- (IBAction)ActionHomeButton:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"GameEndToHome" sender:self];
+}
 @end
