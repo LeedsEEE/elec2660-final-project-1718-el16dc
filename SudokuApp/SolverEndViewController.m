@@ -65,15 +65,7 @@
             
             textField.textAlignment = NSTextAlignmentCenter;
             textField.keyboardType = UIKeyboardTypeNumberPad;
-            
-            if (stringHas*){
-                //remove *
-                [textField setFont:[UIFont fontWithName:@"Arial-BoldMT" size:30]];
-            }
-            else {
-                [textField setFont:[UIFont fontWithName:@"Arial" size:28]];
-            }
-            
+
             //[textField setFont:[UIFont systemFontOfSize:25]];
             //textField.restorationIdentifier = textField i j;
             //textField.returnKeyType = UIReturnKeyDone;
@@ -91,8 +83,20 @@
     for(int i = 0; i < _SolvedSudoku.count; i++){
         for(int j = 0; j < [[_SolvedSudoku objectAtIndex:i] count]; j++){
             for(int n = 0; n < 80; n++){
+                NSString *val = [[_SolvedSudoku objectAtIndex:i] objectAtIndex:j];
                 UITextField *currentTextField = [[_textFields objectAtIndex:i] objectAtIndex:j];
-                currentTextField.text = [NSString stringWithFormat:@"%@", [[_SolvedSudoku objectAtIndex:i] objectAtIndex:j]];
+                if (val.length > 1){
+                    // trim last character off
+                    
+                    [currentTextField setFont:[UIFont fontWithName:@"Arial-BoldMT" size:30]];
+                }
+                else {
+                    [currentTextField setFont:[UIFont fontWithName:@"Arial" size:28]];
+                }
+                
+                val = [val stringByReplacingOccurrencesOfString:@"*" withString:@""];
+                
+                currentTextField.text = [NSString stringWithFormat:@"%@", val];
                 currentTextField.userInteractionEnabled = NO;
             
             }
