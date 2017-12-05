@@ -169,21 +169,22 @@ replacementString:(NSString *)string{
 - (IBAction)ActionHintButton:(UIButton *)sender {
 
     NSMutableArray *numberReveal = [self GenerateNRandomNumbers:1];
-    
-    for(int i = 0; i < _field.count; i++){
-        for(int j = 0; j < [[_field objectAtIndex:i] count]; j++){
-            for(int n = 0; n < [numberReveal count]; n++){
+    if ([self IsTheSudokuFull]) {
+        for(int i = 0; i < _field.count; i++){
+            for(int j = 0; j < [[_field objectAtIndex:i] count]; j++){
+                for(int n = 0; n < [numberReveal count]; n++){
 
-                if([[numberReveal objectAtIndex:n] intValue] == i + j*9){
-                    UITextField *currentTextField = [[_textFields objectAtIndex:i] objectAtIndex:j];
-                    if(currentTextField.text.length > 0){
-                        return [self ActionHintButton:sender];
+                    if([[numberReveal objectAtIndex:n] intValue] == i + j*9){
+                        UITextField *currentTextField = [[_textFields objectAtIndex:i] objectAtIndex:j];
+                        if(currentTextField.text.length > 0){
+                            return [self ActionHintButton:sender];
+                        }
+                        currentTextField.text = [NSString stringWithFormat:@"%@", [[_field objectAtIndex:i] objectAtIndex:j]];
+                        currentTextField.userInteractionEnabled = NO;
                     }
-                    currentTextField.text = [NSString stringWithFormat:@"%@", [[_field objectAtIndex:i] objectAtIndex:j]];
-                    currentTextField.userInteractionEnabled = NO;
                 }
-            }
             
+            }
         }
     }
 }
@@ -199,6 +200,7 @@ replacementString:(NSString *)string{
     }
     
 }
+
 
 -(BOOL)CheckThisSudoku:(NSMutableArray*)sudoku{
     for(int i = 0; i < 9; i++){
@@ -495,6 +497,19 @@ replacementString:(NSString *)string{
             }
         }
     }
+}
+
+-(BOOL)IsTheSudokuFull{
+    for (int i = 0; i < 9; i++ ){
+        for (int j = 0; j < 9; j++){
+            UITextField *textField = [[_textFields objectAtIndex:i] objectAtIndex:j];
+            if (textField.text.length > 0) {
+          //      NSLog(@"IsTheSudokuFull returns : %@", IsTheSudokuFull);
+                return TRUE;
+            }
+        }
+    }
+    return FALSE;
 }
 
     @end
