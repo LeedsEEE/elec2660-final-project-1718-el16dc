@@ -19,6 +19,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+# pragma mark - Initialise
     self.GameModePicker.delegate = self;// sets up picker data
     self.GameModePicker.dataSource = self; // "    "    "   "
     self.mode = 1; // initialises gome mode to be one, so if picker is not changed before starting game, it starts easy mode. As before it would start at null
@@ -31,10 +32,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+# pragma mark - "Go" segue
 - (IBAction)Go:(UIButton *)sender {
     [self performSegueWithIdentifier:@"MenuToGame" sender:self]; // completes segue to next screen on press of "GO"
 }
 
+# pragma mark - Setting Up Picker View
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 1; // Sets Single Column
 }
@@ -78,6 +81,7 @@
     
 }
 
+# pragma mark - Sending Information Through Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
         SudokuViewController *destination = [segue destinationViewController];

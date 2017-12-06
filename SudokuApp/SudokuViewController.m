@@ -21,9 +21,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+#pragma mark - Initialise Properties
     _textFields = [[NSMutableArray alloc]init];
     self.sudoku = [NSMutableArray array];
     
+# pragma mark - Setting Up TextFields
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
     CGFloat screenHeight = screenRect.size.height;
@@ -50,28 +52,16 @@
     NSLog(@"startx = %f", startx);
     NSLog(@"starty = %f", starty);
     
-    
-    
-    
-    
- for (int y = 0; y <= 8; y++) {
+#pragma mark - Adding TextFields
+    for (int y = 0; y <= 8; y++) {
      NSMutableArray *row = [NSMutableArray array];
-     
-     
-        for (int x = 0; x <= 8; x++) {
+            for (int x = 0; x <= 8; x++) {
             // = [[UITextField alloc] initWithFrame:CGRectMake(x, y, width, height)] found on https://gist.github.com/bsodmike/988751
-            
             UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(startx + x*squareWidth, starty + y*squareHeight, squareWidth, squareHeight)];
-            //textField.text=@"X";
-            //textField.borderStyle = UITextBorderStyleRoundedRect; just to check
-
             textField.textAlignment = NSTextAlignmentCenter;
             textField.keyboardType = UIKeyboardTypeNumberPad;
-            //[textField setFont:[UIFont systemFontOfSize:25]];
             [textField setFont:[UIFont fontWithName:@"Arial" size:28]];
             textField.clearsOnBeginEditing = YES;
-            //textField.restorationIdentifier = textField i j;
-            //textField.returnKeyType = UIReturnKeyDone;
             textField.delegate = self;
             [row addObject:textField];
             [self.view addSubview:textField];
@@ -90,6 +80,8 @@
                                                  name:UIKeyboardDidHideNotification
                                                object:nil];
     */
+
+#pragma mark - Initialising Variables
     _shownNumberCount = 81;
     if (self.mode==1){
         NSLog(@"Game Mode = Easy");
@@ -122,9 +114,12 @@
         self.OutletSolveButton.hidden = NO;
         _shownNumberCount = 0;
     }
+    
+#pragma mark - Generate Sudoku
     [self fillEmptyGrid];
     [self generateSudoku];
 
+#pragma mark - Display Numbers In Sudoku
     NSMutableArray *selectedNumbers = [self GenerateNRandomNumbers:_shownNumberCount];
     for(int i = 0; i < _field.count; i++){
         for(int j = 0; j < [[_field objectAtIndex:i] count]; j++){
@@ -157,6 +152,7 @@
 }
 */
 
+#pragma mark - Setting Up Text Field Properties
 - (BOOL)textField:(UITextField *)textField
 shouldChangeCharactersInRange:(NSRange)range
 replacementString:(NSString *)string{
@@ -170,6 +166,28 @@ replacementString:(NSString *)string{
     return YES; // forces text field to act/become first responder and then give it up for the next one, whilst the keypad is active (and therefore the text field is selected
 }
 
+- (IBAction)touchOutside:(UIControl *)sender {
+    
+    NSLog(@"Touch outside");
+    for(int i = 0; i < [_textFields count]; i++){ // i = row, j = column. This goes through all i's
+        for(int j = 0; j < [[_textFields objectAtIndex:i] count]; j++){ // this goes through all j's
+            UITextField *tempTextField = [[_textFields objectAtIndex:i] objectAtIndex:j]; // sets up temporary save for textField
+            if([tempTextField isFirstResponder]){ // checks if first responder, which it always is
+                [tempTextField resignFirstResponder];
+            }
+        }
+    }
+}
+/*
+ - (void)keyboardDidShow: (NSNotification *) notif{
+ // Do something here
+ }
+ 
+ - (void)keyboardDidHide: (NSNotification *) notif{
+ // Do something here
+ }*/
+
+#pragma mark - Hint Function
 - (IBAction)ActionHintButton:(UIButton *)sender {
     // TODO Fix me plz
     
@@ -198,6 +216,7 @@ replacementString:(NSString *)string{
     }
 }
 
+#pragma mark - Check Function
 - (IBAction)ActionCheckButton:(UIButton *)sender {
     
     [self UpdateSudoku];
@@ -251,45 +270,8 @@ replacementString:(NSString *)string{
     }
 }
 
-- (IBAction)ActionSolveButton:(UIButton *)sender {
-    
-    
-    // adapted from: https://www.youtube.com/watch?v=ka5jb_4ZBYs
-    
-    [self UpdateSudoku];
-
-    // call solve sudoku and store returned array in solvedSudoku
-    
-    self.SolvedSudoku = [self SolveThisSudoku:self.sudoku index:0];
-    
-    [self performSegueWithIdentifier:@"GameToSolved" sender:self];
-    
-}
-
-- (IBAction)touchOutside:(UIControl *)sender {
-    
-    NSLog(@"Touch outside");
-    for(int i = 0; i < [_textFields count]; i++){ // i = row, j = column. This goes through all i's
-        for(int j = 0; j < [[_textFields objectAtIndex:i] count]; j++){ // this goes through all j's
-            UITextField *tempTextField = [[_textFields objectAtIndex:i] objectAtIndex:j]; // sets up temporary save for textField
-            if([tempTextField isFirstResponder]){ // checks if first responder, which it always is
-                [tempTextField resignFirstResponder];
-            }
-        }
-    }
-}
-/*
-- (void)keyboardDidShow: (NSNotification *) notif{
-    // Do something here
-}
-
-- (void)keyboardDidHide: (NSNotification *) notif{
-    // Do something here
-}*/
-
-
-
-        // generateSudoku method found from: https://stackoverflow.com/questions/8595370/sudoku-generation-in-objective-c
+#pragma mark - Generate Sudoku
+// generateSudoku method found from: https://stackoverflow.com/questions/8595370/sudoku-generation-in-objective-c
 -(void) generateSudoku{
     [self fillEmptyGrid];
     @autoreleasepool {
@@ -406,6 +388,21 @@ replacementString:(NSString *)string{
     }
 }
 
+#pragma mark - Solve Function
+- (IBAction)ActionSolveButton:(UIButton *)sender {
+    
+    
+    // adapted from: https://www.youtube.com/watch?v=ka5jb_4ZBYs
+    
+    [self UpdateSudoku];
+    
+    // call solve sudoku and store returned array in solvedSudoku
+    
+    self.SolvedSudoku = [self SolveThisSudoku:self.sudoku index:0];
+    
+    [self performSegueWithIdentifier:@"GameToSolved" sender:self];
+    
+}
 -(NSMutableArray*)SolveThisSudoku:(NSMutableArray*)sudoku index:(int)index{
     
     _solved = (index > 80);
@@ -435,6 +432,7 @@ replacementString:(NSString *)string{
     return sudoku;
 }
 
+#pragma mark - Is There An "X" In ...
 -(BOOL)IsThereA:(int)n inRow:(int)row inSudoku:(NSArray*)sudoku{
     for(int i = 0; i < 9; i++) {
         if([[[sudoku objectAtIndex:row] objectAtIndex:i] intValue] == n){
@@ -466,6 +464,7 @@ replacementString:(NSString *)string{
     return NO;
 }
 
+#pragma mark - Sending Information Through Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
     if([[segue identifier] isEqualToString:@"GameToSolved"]){
@@ -481,6 +480,7 @@ replacementString:(NSString *)string{
     
 }
 
+#pragma mark - Update Sudoku (called in check and solve)
 -(void)UpdateSudoku{
     // adapted from: https://www.youtube.com/watch?v=ka5jb_4ZBYs
     // create nsmarray called sudoku
@@ -510,19 +510,6 @@ replacementString:(NSString *)string{
     }
 }
 
--(BOOL)IsTheSudokuFull{
-    for (int i = 0; i < 9; i++ ){
-        for (int j = 0; j < 9; j++){
-            UITextField *textField = [[_textFields objectAtIndex:i] objectAtIndex:j];
-            if (textField.text.length > 0) {
-          //      NSLog(@"IsTheSudokuFull returns : %@", IsTheSudokuFull);
-                return TRUE;
-            }
-        }
-    }
-    return FALSE;
-}
-
-    @end
+@end
 
 

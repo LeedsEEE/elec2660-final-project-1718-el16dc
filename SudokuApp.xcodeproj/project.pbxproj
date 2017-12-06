@@ -17,7 +17,6 @@
 		B03F1E191FC31EE400F95BBA /* SudokuAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B03F1E181FC31EE400F95BBA /* SudokuAppTests.m */; };
 		B03F1E241FC31EE400F95BBA /* SudokuAppUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B03F1E231FC31EE400F95BBA /* SudokuAppUITests.m */; };
 		B03F1E331FC31F1900F95BBA /* SudokuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B03F1E321FC31F1900F95BBA /* SudokuViewController.m */; };
-		B03F1E391FC31F7100F95BBA /* Sudoku.m in Sources */ = {isa = PBXBuildFile; fileRef = B03F1E381FC31F7100F95BBA /* Sudoku.m */; };
 		B0D909371FCC3A13000E5C64 /* SolverEndViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D909361FCC3A13000E5C64 /* SolverEndViewController.m */; };
 		B0D9093A1FCC40D0000E5C64 /* EndGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D909391FCC40D0000E5C64 /* EndGameViewController.m */; };
 		C00E1F1AEB779C32A08FBE3B /* Pods_SudokuApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD3003F3EAC6782D21BBAC9 /* Pods_SudokuApp.framework */; };
@@ -66,8 +65,6 @@
 		B03F1E251FC31EE400F95BBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B03F1E311FC31F1900F95BBA /* SudokuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SudokuViewController.h; sourceTree = "<group>"; };
 		B03F1E321FC31F1900F95BBA /* SudokuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SudokuViewController.m; sourceTree = "<group>"; };
-		B03F1E371FC31F7100F95BBA /* Sudoku.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sudoku.h; sourceTree = "<group>"; };
-		B03F1E381FC31F7100F95BBA /* Sudoku.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sudoku.m; sourceTree = "<group>"; };
 		B0D909351FCC3A13000E5C64 /* SolverEndViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolverEndViewController.h; sourceTree = "<group>"; };
 		B0D909361FCC3A13000E5C64 /* SolverEndViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolverEndViewController.m; sourceTree = "<group>"; };
 		B0D909381FCC40D0000E5C64 /* EndGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndGameViewController.h; sourceTree = "<group>"; };
@@ -159,8 +156,6 @@
 				B03F1E051FC31EE400F95BBA /* MainMenuViewController.m */,
 				B03F1E311FC31F1900F95BBA /* SudokuViewController.h */,
 				B03F1E321FC31F1900F95BBA /* SudokuViewController.m */,
-				B03F1E371FC31F7100F95BBA /* Sudoku.h */,
-				B03F1E381FC31F7100F95BBA /* Sudoku.m */,
 				B0D909381FCC40D0000E5C64 /* EndGameViewController.h */,
 				B0D909391FCC40D0000E5C64 /* EndGameViewController.m */,
 				B03F1E071FC31EE400F95BBA /* Main.storyboard */,
@@ -484,7 +479,6 @@
 				B03F1E031FC31EE400F95BBA /* AppDelegate.m in Sources */,
 				B0D909371FCC3A13000E5C64 /* SolverEndViewController.m in Sources */,
 				B03F1E001FC31EE400F95BBA /* main.m in Sources */,
-				B03F1E391FC31F7100F95BBA /* Sudoku.m in Sources */,
 				B03F1E331FC31F1900F95BBA /* SudokuViewController.m in Sources */,
 				B0D9093A1FCC40D0000E5C64 /* EndGameViewController.m in Sources */,
 			);

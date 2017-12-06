@@ -7,16 +7,11 @@
 // edit to commit
 
 #import <UIKit/UIKit.h>
-#import "Sudoku.h"
-//#import "DownPicker.h"//
-#import "Sudoku.h"
-// Found from https://cocoapods.org/?q=lang%3Aobjc%20Downpicker
+
 
 @interface SudokuViewController : UIViewController <UITextFieldDelegate>
 
-//@property (strong, nonatomic) DownPicker *downPicker1;
-
-@property int mode; // carried through segu, used when show/hide buttons
+@property int mode; // carried through segue, used when show/hide buttons
 
 // Declare button outlet, so can show/hide when needed
 // Moved down on screen to be fully hidden by keypad when it pops up
@@ -45,17 +40,7 @@ replacementString:(NSString *)string;
 
 @property BOOL solved;
 
-// Setting up all textFields row by row.
-// Named using coordinate system, top left = (1,1) bottom right = (9,9)
-
-
-
-//@property (strong, nonatomic) DownPicker *downPicker;
-
-
 - (IBAction)touchOutside:(UIControl *)sender; // used when initialising the text fields
-
-//- (IBAction)numberEntered:(UITextField *)sender; // used when storing numbers in textField
 
 @property (strong, nonatomic) NSMutableArray* textFields; // Array of all text fields
 @property NSMutableArray *field;
