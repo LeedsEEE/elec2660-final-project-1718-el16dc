@@ -61,6 +61,7 @@ replacementString:(NSString *)string;
 @property NSMutableArray *field;
 @property NSMutableArray *sudoku;
 @property int shownNumberCount;
+@property int numbersToReveal;
 
 @property (strong, nonatomic) NSMutableArray* SolvedSudoku;
 

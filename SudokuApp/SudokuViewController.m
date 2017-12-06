@@ -95,21 +95,24 @@
         self.OutletHintButton.hidden = NO;
         self.OutletCheckButton.hidden = NO;
         self.OutletSolveButton.hidden = YES;
-        _shownNumberCount = 40;
+        _shownNumberCount = 50;
+        _numbersToReveal = 81 - _shownNumberCount;
     }
     else if (self.mode==2){
         NSLog(@"Game Mode = Moderate");
         self.OutletHintButton.hidden = NO;
         self.OutletCheckButton.hidden = NO;
         self.OutletSolveButton.hidden = YES;
-        _shownNumberCount = 30;
+        _shownNumberCount = 40;
+        _numbersToReveal = 81 - _shownNumberCount;
     }
     if (self.mode==3){
         NSLog(@"Game Mode = Hard");
         self.OutletHintButton.hidden = NO;
         self.OutletCheckButton.hidden = NO;
         self.OutletSolveButton.hidden = YES;
-        _shownNumberCount = 20;
+        _shownNumberCount = 30;
+        _numbersToReveal = 81 - _shownNumberCount;
     }
     if (self.mode==4){
         NSLog(@"Game Mode = Solver");
@@ -167,13 +170,17 @@ replacementString:(NSString *)string{
 }
 
 - (IBAction)ActionHintButton:(UIButton *)sender {
-
+    // TODO Fix me plz
+    
+    /*
+     If there are more numbers to reveal, do thing
+     If not, don't do thing
+     */
+    if (_numbersToReveal > 0) {
     NSMutableArray *numberReveal = [self GenerateNRandomNumbers:1];
-    if ([self IsTheSudokuFull]) {
         for(int i = 0; i < _field.count; i++){
             for(int j = 0; j < [[_field objectAtIndex:i] count]; j++){
                 for(int n = 0; n < [numberReveal count]; n++){
-
                     if([[numberReveal objectAtIndex:n] intValue] == i + j*9){
                         UITextField *currentTextField = [[_textFields objectAtIndex:i] objectAtIndex:j];
                         if(currentTextField.text.length > 0){
@@ -181,9 +188,10 @@ replacementString:(NSString *)string{
                         }
                         currentTextField.text = [NSString stringWithFormat:@"%@", [[_field objectAtIndex:i] objectAtIndex:j]];
                         currentTextField.userInteractionEnabled = NO;
+                        _numbersToReveal = _numbersToReveal - 1;
+                        NSLog(@"_numbersToReveal is %d", _numbersToReveal);
                     }
                 }
-            
             }
         }
     }
