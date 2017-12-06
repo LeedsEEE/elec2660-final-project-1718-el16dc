@@ -202,7 +202,7 @@ replacementString:(NSString *)string{
     [self UpdateSudoku];
     [self HighlightIfWrong:_sudoku];
     
-    NSLog(@"_soduku: %@", _sudoku);
+    NSLog(@"_sudoku: %@", _sudoku);
     if ([self CheckThisSudoku:_sudoku]) {
         [self performSegueWithIdentifier:@"GameToEnd" sender:self];
     }
@@ -484,6 +484,8 @@ replacementString:(NSString *)string{
     // adapted from: https://www.youtube.com/watch?v=ka5jb_4ZBYs
     // create nsmarray called sudoku
     
+    NSLog(@"Updating sudoku");
+    
     for(int i = 0; i < 9; i++){
         //create nsmarray called rowTemp
         NSMutableArray *tempRow = [NSMutableArray array];
@@ -491,7 +493,7 @@ replacementString:(NSString *)string{
         for(int j = 0; j < 9; j++){
             // check if text field has text inside it
             // if yes put that text into the sudoku at [i][j]
-            // if no put @"0" in the soduku
+            // if no put @"0" in the sudoku
             UITextField *textField = [[_textFields objectAtIndex:i] objectAtIndex:j];
             if (textField.text.length > 0) { //https://stackoverflow.com/questions/3173679/objective-c-checking-whether-text-field-is-empty
                 //self.sudoku[i][j] = textField.text;
