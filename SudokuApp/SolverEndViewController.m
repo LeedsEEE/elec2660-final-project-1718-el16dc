@@ -75,16 +75,16 @@
                 if (val.length > 1){
                     // trim last character off
                     
-                    [currentTextField setFont:[UIFont fontWithName:@"Arial-BoldMT" size:30]];
+                    [currentTextField setFont:[UIFont fontWithName:@"Arial-BoldMT" size:30]]; // if length > 1, therefore got *, which means was an original number. Put in bold, and remove star. For user clarity
                 }
                 else {
-                    [currentTextField setFont:[UIFont fontWithName:@"Arial" size:28]];
+                    [currentTextField setFont:[UIFont fontWithName:@"Arial" size:28]]; // set rest to be normal
                 }
                 
-                val = [val stringByReplacingOccurrencesOfString:@"*" withString:@""];
+                val = [val stringByReplacingOccurrencesOfString:@"*" withString:@""]; // remove star
                 
                 currentTextField.text = [NSString stringWithFormat:@"%@", val];
-                currentTextField.userInteractionEnabled = NO;
+                currentTextField.userInteractionEnabled = NO; // blocks user being allowed to edit
             
             }
             
@@ -111,6 +111,6 @@
 
 #pragma mark - Home Segue
 - (IBAction)ActionHomeButton:(UIButton *)sender {
-        [self performSegueWithIdentifier:@"SolvedToHome" sender:self];
+        [self performSegueWithIdentifier:@"SolvedToHome" sender:self]; // segues home
 }
 @end

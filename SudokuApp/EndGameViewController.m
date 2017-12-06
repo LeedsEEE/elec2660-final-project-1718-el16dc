@@ -36,6 +36,6 @@
 
 #pragma mark - Home Segue
 - (IBAction)ActionHomeButton:(UIButton *)sender {
-    [self performSegueWithIdentifier:@"GameEndToHome" sender:self];
+    [self performSegueWithIdentifier:@"GameEndToHome" sender:self]; // segues back home
 }
 @end

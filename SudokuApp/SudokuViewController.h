@@ -47,6 +47,7 @@ replacementString:(NSString *)string;
 @property NSMutableArray *sudoku;
 @property int shownNumberCount;
 @property int numbersToReveal;
+@property int displayedNumberCount;
 
 @property (strong, nonatomic) NSMutableArray* SolvedSudoku;
 

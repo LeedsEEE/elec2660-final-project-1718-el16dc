@@ -24,15 +24,16 @@
 #pragma mark - Initialise Properties
     _textFields = [[NSMutableArray alloc]init];
     self.sudoku = [NSMutableArray array];
+    _displayedNumberCount = 0;
     
 # pragma mark - Setting Up TextFields
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGRect screenRect = [[UIScreen mainScreen] bounds]; // gets screen boundaries, unique per device. In order to calculte optimum size for text fields
     CGFloat screenWidth = screenRect.size.width;
     CGFloat screenHeight = screenRect.size.height;
     NSLog(@"screenWidth = %f", screenWidth);
     NSLog(@"screenHeight = %f", screenHeight);
     
-    float borderWidth = ((screenWidth*343)/375);
+    float borderWidth = ((screenWidth*343)/375); // sets boundaries and therefore size that sudoku can be. Changes per device
     float borderHeight = ((screenHeight*603)/667);
     float sudokuHeight = borderWidth;
     float sudokuWidth = borderWidth;
@@ -41,7 +42,7 @@
     NSLog(@"SudokuWidth = %f", sudokuWidth);
     NSLog(@"borderHeight = %f", borderHeight);
     
-    float squareHeight = (sudokuHeight/9);
+    float squareHeight = (sudokuHeight/9); // sets sizes of squares
     float squareWidth = (sudokuWidth/9);
     NSLog(@"squareHeight = %f", squareHeight);
     NSLog(@"squareWidth = %f", squareWidth);
@@ -49,7 +50,7 @@
     float startx = ((screenWidth-sudokuWidth)/2)+1;
     float starty = 64.0;//(screenHeight-borderHeight);
     
-    NSLog(@"startx = %f", startx);
+    NSLog(@"startx = %f", startx); // check values
     NSLog(@"starty = %f", starty);
     
 #pragma mark - Adding TextFields
@@ -127,8 +128,8 @@
                 if([[selectedNumbers objectAtIndex:n] intValue] == i + j*9){
                     UITextField *currentTextField = [[_textFields objectAtIndex:i] objectAtIndex:j];
                     currentTextField.text = [NSString stringWithFormat:@"%@", [[_field objectAtIndex:i] objectAtIndex:j]];
-                    currentTextField.userInteractionEnabled = NO;
-                    [currentTextField setFont:[UIFont fontWithName:@"Arial-BoldMT" size:30]];
+                    currentTextField.userInteractionEnabled = NO; // stops people being able to change correct/programically entered values (genrreate, hint or otherwise)
+                    [currentTextField setFont:[UIFont fontWithName:@"Arial-BoldMT" size:30]]; // sets originally entered values (generate) in bold, to highlight user entered values in case incorrect etc
                 }
             }
             
@@ -157,7 +158,7 @@
 shouldChangeCharactersInRange:(NSRange)range
 replacementString:(NSString *)string{
     //NSLog(@"%@, %@, %ld", textField.text, string, string.length);
-    return !(textField.text.length > 0 && string.length != 0);
+    return !(textField.text.length > 0 && string.length != 0); // string length can only be 1 in the textfield. so stops keypad input past 1
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -173,7 +174,7 @@ replacementString:(NSString *)string{
         for(int j = 0; j < [[_textFields objectAtIndex:i] count]; j++){ // this goes through all j's
             UITextField *tempTextField = [[_textFields objectAtIndex:i] objectAtIndex:j]; // sets up temporary save for textField
             if([tempTextField isFirstResponder]){ // checks if first responder, which it always is
-                [tempTextField resignFirstResponder];
+                [tempTextField resignFirstResponder]; // closes keypad
             }
         }
     }
@@ -189,12 +190,10 @@ replacementString:(NSString *)string{
 
 #pragma mark - Hint Function
 - (IBAction)ActionHintButton:(UIButton *)sender {
-    // TODO Fix me plz
+
+    [self UpdateSudoku];
+    _numbersToReveal = 81 - _displayedNumberCount;
     
-    /*
-     If there are more numbers to reveal, do thing
-     If not, don't do thing
-     */
     if (_numbersToReveal > 0) {
     NSMutableArray *numberReveal = [self GenerateNRandomNumbers:1];
         for(int i = 0; i < _field.count; i++){
@@ -202,12 +201,12 @@ replacementString:(NSString *)string{
                 for(int n = 0; n < [numberReveal count]; n++){
                     if([[numberReveal objectAtIndex:n] intValue] == i + j*9){
                         UITextField *currentTextField = [[_textFields objectAtIndex:i] objectAtIndex:j];
-                        if(currentTextField.text.length > 0){
-                            return [self ActionHintButton:sender];
+                        if(currentTextField.text.length > 0){ // checks if text field is empty
+                            return [self ActionHintButton:sender]; // if not empty do another square
                         }
                         currentTextField.text = [NSString stringWithFormat:@"%@", [[_field objectAtIndex:i] objectAtIndex:j]];
                         currentTextField.userInteractionEnabled = NO;
-                        _numbersToReveal = _numbersToReveal - 1;
+                        _numbersToReveal = _numbersToReveal - 1; // reveals square and counts down, so doesnt go past array when all text fields are full. As otherwise it is searching forever
                         NSLog(@"_numbersToReveal is %d", _numbersToReveal);
                     }
                 }
@@ -238,7 +237,7 @@ replacementString:(NSString *)string{
             [[sudoku objectAtIndex:i] replaceObjectAtIndex:j withObject:@"0"];
             
             if ([self IsThereA:test_num inBox:box inSudoku:sudoku] || [self IsThereA:test_num inRow:i inSudoku:sudoku] || [self IsThereA:test_num inColumn:j inSudoku:sudoku]){
-                [[sudoku objectAtIndex:i] replaceObjectAtIndex:j withObject:[NSString stringWithFormat:@"%d", test_num]];
+                [[sudoku objectAtIndex:i] replaceObjectAtIndex:j withObject:[NSString stringWithFormat:@"%d", test_num]]; // checks test value against game rules
                 return NO;
             }
             [[sudoku objectAtIndex:i] replaceObjectAtIndex:j withObject:[NSString stringWithFormat:@"%d", test_num]];
@@ -256,7 +255,7 @@ replacementString:(NSString *)string{
             UITextField *currentTextField = [[_textFields objectAtIndex:i] objectAtIndex:j];
             if ([self IsThereA:test_num inBox:box inSudoku:sudoku] || [self IsThereA:test_num inRow:i inSudoku:sudoku] || [self IsThereA:test_num inColumn:j inSudoku:sudoku]){
                 if (currentTextField.text.length > 0) {
-                currentTextField.textColor = [UIColor redColor];
+                currentTextField.textColor = [UIColor redColor]; // sets text to be red so if empty left black
                 }
                 else {
                     currentTextField.textColor = [UIColor blackColor];
@@ -423,7 +422,6 @@ replacementString:(NSString *)string{
                 [[sudoku objectAtIndex:row] setObject:[NSString stringWithFormat:@"%d", test_num] atIndex:column];
                 sudoku = [self SolveThisSudoku:sudoku index:index+1];
                 if (_solved) return sudoku;
-                //SolvedSudoku = sudoku;
             }
         }
         [[sudoku objectAtIndex:row] setObject:@"0" atIndex:column];
@@ -435,7 +433,7 @@ replacementString:(NSString *)string{
 #pragma mark - Is There An "X" In ...
 -(BOOL)IsThereA:(int)n inRow:(int)row inSudoku:(NSArray*)sudoku{
     for(int i = 0; i < 9; i++) {
-        if([[[sudoku objectAtIndex:row] objectAtIndex:i] intValue] == n){
+        if([[[sudoku objectAtIndex:row] objectAtIndex:i] intValue] == n){ // checks if occurs in row before
             return YES;
         }
     }
@@ -444,7 +442,7 @@ replacementString:(NSString *)string{
 
 -(BOOL)IsThereA:(int)n inColumn:(int)column inSudoku:(NSArray*)sudoku{
     for(int i = 0; i < 9; i++) {
-        if([[[sudoku objectAtIndex:i] objectAtIndex:column] intValue] == n){
+        if([[[sudoku objectAtIndex:i] objectAtIndex:column] intValue] == n){ // checks if occurs in column before
             return YES;
         }
     }
@@ -452,12 +450,12 @@ replacementString:(NSString *)string{
 }
 
 -(BOOL)IsThereA:(int)n inBox:(int)Box inSudoku:(NSArray*)sudoku{
-    int column_offset = 3 * (Box / 3);
-    int row_offset = 3 * (Box % 3);
+    int column_offset = 3 * (Box / 3); // eg. 012012012
+    int row_offset = 3 * (Box % 3); // eg. 000111222
     for(int i = 0; i < 9; i++){
         int column = column_offset + i / 3;
         int row = row_offset + i % 3;
-        if([[[sudoku objectAtIndex:row] objectAtIndex:column] intValue] == n){
+        if([[[sudoku objectAtIndex:row] objectAtIndex:column] intValue] == n){ // checks if occurs in box again
             return YES;
         }
     }
@@ -469,11 +467,8 @@ replacementString:(NSString *)string{
     
     if([[segue identifier] isEqualToString:@"GameToSolved"]){
         SolverEndViewController *tvc = segue.destinationViewController;
-        
-
-        
         NSLog(@">> solved sudoku segued: %@", self.SolvedSudoku);
-        tvc.SolvedSudoku = self.SolvedSudoku;
+        tvc.SolvedSudoku = self.SolvedSudoku; // send array through segue
         
     }
     
@@ -485,7 +480,8 @@ replacementString:(NSString *)string{
     // adapted from: https://www.youtube.com/watch?v=ka5jb_4ZBYs
     // create nsmarray called sudoku
     
-    NSLog(@"Updating sudoku");
+    //NSLog(@"Updating sudoku");
+    self.displayedNumberCount =0;
     
     for(int i = 0; i < 9; i++){
         //create nsmarray called rowTemp
@@ -499,15 +495,16 @@ replacementString:(NSString *)string{
             if (textField.text.length > 0) { //https://stackoverflow.com/questions/3173679/objective-c-checking-whether-text-field-is-empty
                 //self.sudoku[i][j] = textField.text;
                 NSString *a = textField.text;
-                NSString *b = [NSString stringWithFormat:@"%@*", a];
+                NSString *b = [NSString stringWithFormat:@"%@*", a]; // adds start for later check, see next page (segue)
                 self.sudoku[i][j] = b;
-                
+                self.displayedNumberCount += 1; // increments, to count how many numbers are on the current state
             }
             else{
                 self.sudoku[i][j] = @"0";
             }
         }
     }
+    NSLog(@"displayedNumberCount = %d", _displayedNumberCount);
 }
 
 @end
