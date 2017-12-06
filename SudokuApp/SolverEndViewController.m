@@ -19,9 +19,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
+#pragma mark - Initialise TextField Variable
     _textFields = [[NSMutableArray alloc]init];
     
-    
+#pragma mark - Text Field Properties
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
     CGFloat screenHeight = screenRect.size.height;
@@ -47,38 +48,24 @@
     
     NSLog(@"startx = %f", startx);
     NSLog(@"starty = %f", starty);
-    
-    
-    
-    
-    
+
+#pragma mark - Place Text Fields
     for (int y = 0; y <= 8; y++) {
         NSMutableArray *row = [NSMutableArray array];
-        
-        
         for (int x = 0; x <= 8; x++) {
             // = [[UITextField alloc] initWithFrame:CGRectMake(x, y, width, height)] found on https://gist.github.com/bsodmike/988751
-            
             UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(startx + x*squareWidth, starty + y*squareHeight, squareWidth, squareHeight)];
-            //textField.text=@"X";
-            //textField.borderStyle = UITextBorderStyleRoundedRect; just to check
-            
             textField.textAlignment = NSTextAlignmentCenter;
             textField.keyboardType = UIKeyboardTypeNumberPad;
-
-            //[textField setFont:[UIFont systemFontOfSize:25]];
-            //textField.restorationIdentifier = textField i j;
-            //textField.returnKeyType = UIReturnKeyDone;
             textField.userInteractionEnabled = NO;
             textField.delegate = self;
             [row addObject:textField];
             [self.view addSubview:textField];
-            
-            
         }
         [_textFields addObject:row];
         
     }
+#pragma mark - Making User Entered Numbers Appear In Bold
     NSLog(@"%@", _SolvedSudoku);
     for(int i = 0; i < _SolvedSudoku.count; i++){
         for(int j = 0; j < [[_SolvedSudoku objectAtIndex:i] count]; j++){
@@ -122,6 +109,7 @@
 }
 */
 
+#pragma mark - Home Segue
 - (IBAction)ActionHomeButton:(UIButton *)sender {
         [self performSegueWithIdentifier:@"SolvedToHome" sender:self];
 }
