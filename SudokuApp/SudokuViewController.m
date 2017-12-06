@@ -23,6 +23,7 @@
 
     _textFields = [[NSMutableArray alloc]init];
     self.sudoku = [NSMutableArray array];
+    
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
     CGFloat screenHeight = screenRect.size.height;
