@@ -55,7 +55,7 @@
     
 #pragma mark - Adding TextFields
     for (int y = 0; y <= 8; y++) {
-     NSMutableArray *row = [NSMutableArray array];
+     NSMutableArray *row = [NSMutableArray array]; // creates row variable filled with 1-9 and makes 9 of them. In order to make 2D array
             for (int x = 0; x <= 8; x++) {
             // = [[UITextField alloc] initWithFrame:CGRectMake(x, y, width, height)] found on https://gist.github.com/bsodmike/988751
             UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(startx + x*squareWidth, starty + y*squareHeight, squareWidth, squareHeight)];
@@ -192,22 +192,34 @@ replacementString:(NSString *)string{
 - (IBAction)ActionHintButton:(UIButton *)sender {
 
     [self UpdateSudoku];
-    _numbersToReveal = 81 - _displayedNumberCount;
+    self.SolvedSudoku = [self SolveThisSudoku:self.sudoku index:0];
+    NSLog(@"Solved Sudoku = %@", SolvedSudoku);
+    self.field = self.SolvedSudoku; // checks if solvable before does hint. Becuase if inputted values break thr rules, it will never find a solution (and return the initialised array of 0's for all empty squares
     
-    if (_numbersToReveal > 0) {
-    NSMutableArray *numberReveal = [self GenerateNRandomNumbers:1];
-        for(int i = 0; i < _field.count; i++){
-            for(int j = 0; j < [[_field objectAtIndex:i] count]; j++){
-                for(int n = 0; n < [numberReveal count]; n++){
-                    if([[numberReveal objectAtIndex:n] intValue] == i + j*9){
-                        UITextField *currentTextField = [[_textFields objectAtIndex:i] objectAtIndex:j];
-                        if(currentTextField.text.length > 0){ // checks if text field is empty
-                            return [self ActionHintButton:sender]; // if not empty do another square
+    NSLog(@"Check Sudoku returns %d", [self CheckThisSudoku:_sudoku]);
+    
+    [ self HighlightIfWrong:self.field]; // gives visual feedback to user as to why it hasnt give a hint
+    
+    _numbersToReveal = 81 - _displayedNumberCount;
+    NSLog(@"_numbersToReveal = %d", _numbersToReveal);
+    
+    if ([self CheckThisSudoku: self.sudoku] ) {
+        NSLog(@"Reveal Hint");
+        if (_numbersToReveal > 0) {
+        NSMutableArray *numberReveal = [self GenerateNRandomNumbers:1];
+            for(int i = 0; i < _field.count; i++){
+                for(int j = 0; j < [[_field objectAtIndex:i] count]; j++){
+                    for(int n = 0; n < [numberReveal count]; n++){
+                        if([[numberReveal objectAtIndex:n] intValue] == i + j*9){
+                            UITextField *currentTextField = [[_textFields objectAtIndex:i] objectAtIndex:j];
+                            if(currentTextField.text.length > 0){ // checks if text field is empty
+                                return [self ActionHintButton:sender]; // if not empty do another square
+                            }
+                            currentTextField.text = [NSString stringWithFormat:@"%@", [[_field objectAtIndex:i] objectAtIndex:j]];
+                            currentTextField.userInteractionEnabled = NO;
+                            _numbersToReveal = _numbersToReveal - 1; // reveals square and counts down, so doesnt go past array when all text fields are full. As otherwise it is searching forever
+                            NSLog(@"_numbersToReveal is %d", _numbersToReveal);
                         }
-                        currentTextField.text = [NSString stringWithFormat:@"%@", [[_field objectAtIndex:i] objectAtIndex:j]];
-                        currentTextField.userInteractionEnabled = NO;
-                        _numbersToReveal = _numbersToReveal - 1; // reveals square and counts down, so doesnt go past array when all text fields are full. As otherwise it is searching forever
-                        NSLog(@"_numbersToReveal is %d", _numbersToReveal);
                     }
                 }
             }
@@ -395,11 +407,15 @@ replacementString:(NSString *)string{
     
     [self UpdateSudoku];
     
+    [self HighlightIfWrong:_sudoku];
+    
+    
     // call solve sudoku and store returned array in solvedSudoku
-    
+    if ([self CheckThisSudoku: self.sudoku] ) {
     self.SolvedSudoku = [self SolveThisSudoku:self.sudoku index:0];
-    
+        
     [self performSegueWithIdentifier:@"GameToSolved" sender:self];
+    }
     
 }
 -(NSMutableArray*)SolveThisSudoku:(NSMutableArray*)sudoku index:(int)index{
@@ -429,6 +445,7 @@ replacementString:(NSString *)string{
     
     return sudoku;
 }
+    
 
 #pragma mark - Is There An "X" In ...
 -(BOOL)IsThereA:(int)n inRow:(int)row inSudoku:(NSArray*)sudoku{
@@ -505,6 +522,7 @@ replacementString:(NSString *)string{
         }
     }
     NSLog(@"displayedNumberCount = %d", _displayedNumberCount);
+    NSLog(@"numbersToReveal = %d", _numbersToReveal);
 }
 
 @end

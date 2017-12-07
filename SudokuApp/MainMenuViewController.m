@@ -34,6 +34,8 @@
 
 # pragma mark - "Go" segue
 - (IBAction)Go:(UIButton *)sender {
+    
+    self.mode = ((int) [_GameModePicker selectedRowInComponent:0] + 1); // just updates the row that is selected before it does segue. Previous bug sometimes caused it not to update properly before segue
     [self performSegueWithIdentifier:@"MenuToGame" sender:self]; // completes segue to next screen on press of "GO"
 }
 
@@ -78,16 +80,15 @@
         self.mode=4;
     }
     NSLog(@"GameMode Selected = %d", self.mode); // just to check it works
-    
 }
 
 # pragma mark - Sending Information Through Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
-        SudokuViewController *destination = [segue destinationViewController];
-        
-        destination.mode = self.mode; // used to send the integer "mode" to next page to determine buttons shown
-    
+    SudokuViewController *destination = [segue destinationViewController];
+
+    destination.mode = self.mode; // used to send the integer "mode" to next page to determine buttons shown
+
 }
 
 @end
