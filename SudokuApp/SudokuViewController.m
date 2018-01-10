@@ -408,14 +408,18 @@ replacementString:(NSString *)string{
     [self UpdateSudoku];
     
     [self HighlightIfWrong:_sudoku];
+    NSLog(@"_sudoku: %@", _sudoku);
+    
+    [self UpdateSudoku];
+    NSLog(@"_sudoku: %@", _sudoku);
     
     
     // call solve sudoku and store returned array in solvedSudoku
-    if ([self CheckThisSudoku: self.sudoku] ) {
+    
     self.SolvedSudoku = [self SolveThisSudoku:self.sudoku index:0];
         
     [self performSegueWithIdentifier:@"GameToSolved" sender:self];
-    }
+    
     
 }
 -(NSMutableArray*)SolveThisSudoku:(NSMutableArray*)sudoku index:(int)index{

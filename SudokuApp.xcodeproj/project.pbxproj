@@ -16,7 +16,7 @@
 		B03F1E0E1FC31EE400F95BBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B03F1E0C1FC31EE400F95BBA /* LaunchScreen.storyboard */; };
 		B03F1E191FC31EE400F95BBA /* SudokuAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B03F1E181FC31EE400F95BBA /* SudokuAppTests.m */; };
 		B03F1E241FC31EE400F95BBA /* SudokuAppUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B03F1E231FC31EE400F95BBA /* SudokuAppUITests.m */; };
-		B03F1E331FC31F1900F95BBA /* SudokuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B03F1E321FC31F1900F95BBA /* SudokuViewController.m */; };
+		B0573C6220065CAA0049A86F /* SudokuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B03F1E321FC31F1900F95BBA /* SudokuViewController.m */; };
 		B0D909371FCC3A13000E5C64 /* SolverEndViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D909361FCC3A13000E5C64 /* SolverEndViewController.m */; };
 		B0D9093A1FCC40D0000E5C64 /* EndGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D909391FCC40D0000E5C64 /* EndGameViewController.m */; };
 		C00E1F1AEB779C32A08FBE3B /* Pods_SudokuApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD3003F3EAC6782D21BBAC9 /* Pods_SudokuApp.framework */; };
@@ -478,8 +478,8 @@
 				B03F1E061FC31EE400F95BBA /* MainMenuViewController.m in Sources */,
 				B03F1E031FC31EE400F95BBA /* AppDelegate.m in Sources */,
 				B0D909371FCC3A13000E5C64 /* SolverEndViewController.m in Sources */,
+				B0573C6220065CAA0049A86F /* SudokuViewController.m in Sources */,
 				B03F1E001FC31EE400F95BBA /* main.m in Sources */,
-				B03F1E331FC31F1900F95BBA /* SudokuViewController.m in Sources */,
 				B0D9093A1FCC40D0000E5C64 /* EndGameViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
