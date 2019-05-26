@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *SudokuApp;
 @property (weak, nonatomic) IBOutlet UIPickerView *GameModePicker;
 
+@property int mode;
+
 
 - (IBAction)Go:(UIButton *)sender;
 
